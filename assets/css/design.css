@@ -1,0 +1,138 @@
+body{
+	letter-spacing: 0.3px;
+}
+.dark-mode .navbar-dark{
+    background-color: #454d55 !important;
+    border-color: #3a3e51 !important;
+}
+[class*=sidebar-dark-]{
+	background-color: #3a3e51 !important;
+}
+
+.table.table--card{
+	border-collapse: separate;
+	border-spacing:0 3px ;
+}
+.table.table--card thead th{
+	font-size: 12px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font-weight: 500;
+	letter-spacing: 1px;
+	border-color: transparent;
+}
+
+.table.table--card tbody tr{
+	background-color: #fff;
+}
+.table.table--card tbody td{
+	vertical-align: middle;
+}
+ .brand-link{
+	transition: unset!important;
+}
+.nowrap{
+	white-space: nowrap;
+}
+.custom-radio.bg-white .custom-control-input:not(:checked)~.custom-control-label:before{
+	background-color: #eee !important;
+}
+.form-control.bg-white{
+	border-color: #dedede !important;
+	box-shadow: inset 0 0px 15px rgba(0, 0, 0, 0.1);
+}
+.card .card-header{
+	background-color: #f7f7f7;
+	border: 0;
+}
+.driver-action{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    min-height: 60px;
+    left: 250px;
+    z-index: 1000;
+    background-color: #454d55 !important;
+    border-color: #3a3e51 !important;
+    width: calc(100vw - 250px);
+	box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.1);
+}
+.driver-action .btn.btn-circle{
+	text-align: center;
+	position: relative;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+.driver-action .btn.btn-circle i{
+	font-size: 30px;
+}
+.driver-action .btn.btn-circle span{
+	display: block;
+	padding-top: 5px;
+}
+.navbar-nav .nav-link .fa-bell{
+	font-size: 20px;
+}
+
+.table.table--card tbody tr td{ 
+	border:0!important;
+}
+
+.dashboard-circle-anchor{
+	display: inline-block; 
+	text-align: center;
+	margin-top: 50px;
+}
+.dashboard-circle{
+	display: inline-block;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	border:2px solid #fff;
+	text-align: center;
+	transition: all ease-in-out 0.2s;
+	-webkit-transition: all ease-in-out 0.2s;
+	-moz-transition: all ease-in-out 0.2s;
+	-o-transition: all ease-in-out 0.2s;
+}
+.dashboard-circle i{
+	color:#fff; 
+	display: inline-block;
+	font-size:50px;
+	line-height:3;
+	transition: all ease-in-out 0.2s;
+	-webkit-transition: all ease-in-out 0.2s;
+	-moz-transition: all ease-in-out 0.2s;
+	-o-transition: all ease-in-out 0.2s;
+}
+.dashboard-circle-anchor strong{
+	display: block;
+	font-size:18px;
+	margin-top:10px;
+	color:#fff;
+	letter-spacing: 0.8px;
+	font-weight: 400 !important;
+}
+.dashboard-circle-anchor:hover .dashboard-circle{
+	background-color:rgba(255,255,255,0.1);
+}
+
+.dashboard-circle-anchor:hover  .dashboard-circle i{
+	transform:scale(1.2);
+}
+
+.dark-mode .bg-white > a:hover{
+	color:#fff !important; 
+}
+
+.logistics-body .modal-header{
+	display:block !important;
+}
+
+.logistics-body .modal-header .close{
+	display:none !important;
+}
+
+.logistics-body .modal-header .modal-title{
+	font-size:20px !important;
+}

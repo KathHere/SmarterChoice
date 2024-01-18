@@ -1,0 +1,60 @@
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+    /* this affects the margin in the printer settings */ 
+    margin: 15mm 10mm 30mm 10mm;  
+} 
+@media print {
+    html, body {
+        height:auto;   
+        margin:0px; 
+    }
+}
+@media print {
+   button{
+      display: none !important;
+   }
+}
+
+@media print {
+    a {
+        display:none;
+    }
+ }
+
+ @media print {
+  td > a {
+        display:block;
+    }
+ }
+
+ @media print {
+  #additional_equip_btn {
+        display:none;
+    }
+
+ }
+
+  @media print {
+  .hide_on_print {
+        display:none;
+    }
+
+ }
+
+ @media print {
+  .show_on_print {
+        display:block !important;
+    }
+
+ }
+
+ @media screen and projection {
+    a {
+        display:inline;
+    }
+  }
+
+ 
+ 
+

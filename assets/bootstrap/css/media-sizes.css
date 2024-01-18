@@ -1,0 +1,296 @@
+
+/*  24. Media Queries */
+
+	/*@media only screen and (min-width: 1200) and (max-width: 1517px) {
+		body{
+			border:5px solid red;
+		}
+		
+
+	}*/
+
+	@media only screen and (min-width: 917px) and (max-width: 1199px) {
+		body{
+			border:5px solid yellow;
+		}
+
+		.timer-img-container img{
+			margin-left: 60px;
+			margin-top: 30px;
+
+		}
+		.trustee-img{
+			margin-left: 28px;
+			margin-top: 22px;
+			margin-bottom: 30px;
+		}
+
+		.img-container{
+			margin-left: 36px;
+		}
+		.terms a{
+			margin-left: 3px;
+
+		}
+
+		.exam-summary-logo-container{
+			margin-left: 62px;
+		}
+		.trust-logo img{
+			margin-left: 143px;
+		}
+
+		.score-text{
+			margin-left: 21px;
+
+		}
+		.view-summary{
+			margin-left: 3px;
+		}
+		.parts-container{
+			margin-left: 100px;
+		}
+
+		.trust-img-container img{
+			margin-left: 151px !important;
+			margin-top: 40px !important;
+		}
+		.user-failed{
+			font-size:17px;
+		}
+		.user-passers{
+			font-size:18px;
+			margin-left: 47px;
+		}
+		.user-text{
+			font-size:18px;
+			margin-left: 21px;
+		}
+		.mini-box img{
+			height: 74px;
+		}
+		.mini-box button{
+			margin-top: -59px;
+			padding: 1px 10px !important;
+			padding-bottom: 3px !important;
+			margin-left: 105px;
+		}
+	}
+
+	@media only screen and (min-width: 960px) and (max-width: 990px) {
+		body{
+			border:5px solid purple;
+		}
+		.timer-img-container img{
+			margin-top: -153px;
+
+		}
+		.trustee-img{
+			margin-left: 220px;
+		}
+		.img-container{
+			margin-left: 224px;
+		}
+		.terms a{
+			margin-left: 196px;
+		}
+		
+		.exam-summary-logo-container{
+			margin-left: -17px;
+		}
+		.score-text{
+			margin-left: 174px;
+			font-size: 32px;
+		}
+
+		.exam-over-text{
+			padding: 15px;
+		}
+		.view-summary{
+			margin-left: 189px;
+		}
+		.parts-container{
+			margin-left: 142px;
+		}
+
+		.trust-img-container img{
+			margin-top: -130px !important;
+			
+		}
+		.user-text{
+			font-size: 28px;
+			margin-left: 71px;
+		}
+
+		.user-passers{
+			font-size: 28px;
+			margin-left: 112px;
+		}
+		.user-failed{
+			font-size: 28px;
+			margin-left: 130px;
+		}
+		.mini-box{
+			min-height: 129px;
+		}
+		.mini-box img {
+			margin-top: 7px;
+		}
+		.mini-box button{
+			margin-top: 1px;
+			padding: 1px 27px !important;
+		}
+	}
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		body{
+			border:5px solid red;
+		}
+		
+		.timer-img-container{
+			margin-top: -173px;
+		}
+		.trustee-img{
+			margin-left: 219px;
+			margin-top: 22px;
+			margin-bottom: 30px;
+		}
+
+		.terms a{
+			margin-left: 193px;
+		}
+		.img-container{
+			margin-left: 227px;
+		}
+			.exam-summary-logo-container{
+			margin-left: -13px;
+		}
+		.score-text{
+			margin-left: 169px;
+			font-size: 32px;
+		}
+
+		.exam-over-text{
+			padding: 15px;
+		}
+
+		.view-summary{
+			margin-left: 190px;
+		}
+		.parts-container{
+			margin-left: 134px;
+		}
+		.user-text{
+			font-size: 28px;
+			margin-left: 71px;
+		}
+
+		.user-passers{
+			font-size: 28px;
+			margin-left: 112px;
+		}
+		.user-failed{
+			font-size: 28px;
+			margin-left: 130px;
+		}
+		.mini-box {
+			min-height: 140px;
+		}
+		.mini-box button{
+			margin-top: -4px;
+			margin-left: 93px;
+		}
+		.mini-box img{
+			margin-top: 8px;
+		}
+		.trust-img-container{
+			margin-top: -140px;
+		}
+
+	}
+
+
+
+
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		body{
+			border:5px solid blue;
+		}
+
+		.timer-img-container{
+			margin-top: -179px;
+		}
+		.trustee-img{
+			margin-left: 127px;
+			margin-bottom: 30px;
+			margin-top: 22px;
+		}
+		.img-container{
+			margin-left: 129px;
+		}
+		.terms a{
+			margin-left: 93px;
+		}
+		.parts-container{
+			margin-left: 0px;
+		}
+		.exam-summary-logo-container{
+			margin-left: -13px;
+		}
+
+		.score-text{
+			margin-left: 79px;
+			font-size: 32px;
+		}
+		.exam-over-text{
+			padding: 20px;
+		}
+
+		.view-summary{
+			margin-left: 102px;
+		}
+		.parts-container{
+			margin-left: 46px;
+		}
+
+		.user-text{
+			margin-left: 108px;
+		}
+		.user-passers{
+			margin-left: 145px;
+		}
+		.user-failed{
+			margin-left: 158px;
+		}
+		.mini-box button{
+			margin-left: 236px;
+		}
+
+		.trust-img-container{
+			margin-left: 41px;
+			margin-top: -140px;
+		}
+	}
+
+
+	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+	@media only screen and (max-width: 479px) {
+		body{
+			border:5px solid green;
+		}
+
+		.img-container{
+			margin-left: 31px;
+		}
+		.terms a{
+			margin-left: 15px;
+		}
+	}
+
+
+
+
+
+

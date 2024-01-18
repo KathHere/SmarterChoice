@@ -1,0 +1,935 @@
+@media sizes*/
+
+@media (min-width: 1365px) and (max-width: 1366px) { 
+/* body { border:5px solid red; }*/
+  
+  
+  .video-container{
+     background-position: 163px 9px !important;
+   }
+
+  .video-iframe{
+   margin-left: -59px !important;
+  }
+}
+
+
+
+/*19px*/
+@media (min-width: 1439px) and (max-width: 1440px) { 
+ body { border:5px solid red; }
+
+ .main-content-admin{
+  background-position: 0px -150px;
+ }
+  
+  .survey{
+    background-position:-310px -12px;
+  }
+  
+  .video-container{
+    z-index: 999;
+    height: 400px;
+    width: 54% !important;
+    margin-top: -400px;
+    margin-left: 130px;
+    background-image: url('../img/video-bg.png');
+    background-repeat: no-repeat;
+    background-position: 72px 9px;
+
+
+  }
+
+  .video-iframe{
+   margin-left: 40px !important;
+  }
+}
+
+/*22px*/
+@media (min-width: 1679px) and (max-width: 1680px) { 
+ /*body { border:5px solid red; }*/
+  
+  
+  .video-container{
+    width: 71% !important;
+    margin-left: 161px;
+    background-position: 66px 9px;
+
+
+  }
+
+  .video-iframe{
+    margin-left: -379px !important;
+  }
+}
+
+/*20px*/
+@media (min-width: 1599px) and (max-width: 1600px) { 
+/* body { border:5px solid red; }*/
+  
+  
+  .video-container{
+    width: 71% !important;
+    margin-left: 161px;
+    background-position: 66px 9px;
+
+
+  }
+
+  .video-iframe{
+    margin-left: -323px !important;
+  }
+}
+
+/*12" anad 13" notebook*/
+
+
+@media (min-width: 1023px) and (max-width: 1024px) { 
+/* body { border:5px solid green; }*/
+
+  .survey{
+    background-position: -510px -12px !important; 
+  }
+
+  .main-title{
+    margin-top: 46px !important;
+color: #108cba;
+font-size: 26px !important;
+  }
+
+  .main-content-admin{
+    min-height: 323px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px -100px;
+  }
+  
+  .main-content-text{
+    font-size: 15px !important;
+  }
+  .survey{
+    background-position: -343px -12px;
+  }
+
+  .footer{
+    background-position: -141px -12px;
+  }
+  .video-container{
+    width: 71% !important;
+    margin-left: 112px;
+    background-position: 111px 9px !important;
+
+  }
+
+  .btn-container{
+    margin-top: 11px !important;
+  }
+
+  .livedemo{
+    width: 228px !important;
+    height: 43px !important;
+    font-size: 18px !important;
+  }
+
+  .freetrial{
+    width: 228px !important;
+    height: 43px !important;
+    font-size: 18px !important;
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1366px) { 
+/* body { border:5px solid red; }*/
+  
+  .survey{
+    background-position: -343px -12px;
+  }
+
+  .footer{
+    background-position: -141px -12px;
+  }
+  .video-container{
+    width: 71% !important;
+    margin-left: 112px;
+    background-position: 111px 9px !important;
+
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+/* body { border:10px solid blue; }*/
+
+
+ .video-iframe{
+  margin-left: -129px !important;
+
+ }
+       
+ .video-container{
+  width: 82% !important;
+  background-position: 11px 9px;
+ }
+
+
+ .main-title{
+  font-size: 44px;
+ }
+ .sub-title{
+  font-size: 24px;
+ }
+  
+  .video-icon{
+    margin-left: 108px !important;
+  } 
+
+  .devices-icon{
+    margin-left: 20px!important;
+  }
+  .second-title{
+    font-size: 24.9px !important;
+  }
+  .survey{
+    background-position: -440px -12px;
+  }
+  .footer{
+    background-position: -201px -12px;
+  }
+  .logo-footer{
+    margin-left: 286px !important;
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) { 
+ body { border:10px solid green; }
+
+ .freetrial{
+  margin-bottom: 30px !important;
+ }
+
+.videos-container{
+  width: 748px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+ .avatar{
+  margin-left: 235px !important;
+  margin-top: 12px !important;
+
+ }
+ .survey{
+    background-position: -620px -12px !important;
+ }
+
+ .featuer-content{
+  margin-left: 80px !important;
+ }
+
+ .system-container{
+  margin-top: 0px !important;
+ }
+
+ .faq{
+  margin-top: -120px !important;
+ }
+
+.btn-container{
+  text-align: center !important;
+}
+.main-title{
+  margin-top: 70px !important;
+  text-align: center !important;
+}
+.main-content-text{
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #1398CC !important;
+
+}
+.main-content-admin{
+  background-position: -33px -35px !important; 
+}
+
+
+ .system-container{
+  margin-top: 90px !important;
+ }
+
+ .system-container1{
+   margin-top: -100px !important;
+ }
+
+  .video-container{
+   height: 407px;
+width: 172% !important;
+margin-top: -277px;
+margin-left: -87px;
+  }
+  .navbar-brand{
+    padding-top: 30px;
+  }
+  .header-contents{
+    margin-left: -10px;
+    padding-bottom: 17px;
+    margin-top: -20px;
+  }   
+  .main-content{
+    min-height: 420px;
+  }     
+  .main-title{
+    font-size: 53px;
+   margin-top: 180px;
+
+  }
+  .sub-title{
+    font-size: 21px !important;
+
+  }
+  .video-icon{
+    margin-left: 304px !important;
+  }
+  .devices-icon{
+    margin-top: -300px !important;
+   margin-left: -17px !important;
+  }
+  .feature1{
+    margin-left: 264px !important;
+  }
+  .feature3{
+    padding-bottom: 100px;
+  }
+  .feature-content{
+    width: 500px;
+margin-left: 100px;
+  }
+  .second-title{
+    text-align: center;
+  }
+  .survey{
+    background-position: -539px -12px;
+  }
+  .footer{
+    background-position: -321px -12px;
+  }
+  .logo-footer{
+    margin-left: 157px !important;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 599px) and (max-width: 766px) {
+/* body { border:10px solid yellow; }*/
+
+.videos-container{
+  width: 730px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+
+  .avatar{
+ margin-left: 155px !important;
+  margin-top: 12px !important;
+
+ }
+ .survey{
+    background-position: -740px -12px !important;
+ }
+ .survey-text{
+  font-size: 18px !important;
+ }
+
+ .featuer-content{
+  margin-left: 80px !important;
+ }
+
+ .system-container{
+  margin-top: 0px !important;
+ }
+
+ .faq{
+  margin-top: 0px !important;
+ }
+
+.btn-container{
+  text-align: center !important;
+}
+.main-title{
+  text-align: center !important;
+  margin-top: 50px !important;
+}
+.main-content-text{
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #1398CC !important;
+
+}
+.main-content-admin{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-teacher{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-student{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-parents{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+  .or{
+  visibility: hidden;
+ }
+
+ .livedemo{
+  margin-left: 51px !important;
+ }
+
+ .freetrial{
+   margin-left: 50px !important;
+margin-top: 0px !important;
+ }
+
+ .video-container{
+    height: 400px;
+    width: 99% !important;
+    margin-top: -287px;
+    margin-left: -13px;
+    background-position: -72px 9px;
+ }
+ .video-iframe{
+  margin-left: -16px !important;
+ }
+
+
+ .devices-icon{
+  margin-top: -238px !important;
+margin-left: 9px !important;
+ }
+ .video-icon{
+  margin-left: 225px !important;
+ }
+ .sub-title{
+  font-size: 20px;
+ }
+ .main-title{
+  font-size: 47px;
+ }
+ .main-content{
+  min-height: 620px;
+ }
+ .main-content{
+  background-position: -450px -110px;
+  min-height: 670px;
+ }
+ .navbar-collapse{
+  margin-top: 13px;
+padding-top: 11px;
+ }
+ .sys-features{
+  margin-left: -150px;
+ }
+ .contact-button{
+  width: 150px;
+margin-top: -42px;
+ }
+
+ .survey{
+  height: 351px;
+background-position: -730px -12px;
+ }
+
+ .feature1{
+  margin-left: 211px !important;
+ }
+
+ .second-title{
+  text-align: center;
+ }
+ .logo-footer{
+  margin-left: 94px !important;
+ }
+ 
+}
+
+@media (min-width: 533px) and (max-width: 534px) {
+    /*body { border:10px solid aliceblue !important; }*/
+
+
+.videos-container{
+  width: 730px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+     .avatar{
+ margin-left: 125px !important;
+  margin-top: 12px !important;
+
+ }
+ .survey{
+    background-position: -740px -12px !important;
+ }
+ .survey-text{
+  font-size: 18px !important;
+ }
+
+ .featuer-content{
+  margin-left: 80px !important;
+ }
+
+ .system-container{
+  margin-top: 0px !important;
+ }
+
+ .faq{
+  margin-top: 0px !important;
+ }
+
+.btn-container{
+  text-align: center !important;
+}
+.main-title{
+  text-align: center !important;
+}
+.main-content-text{
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #1398CC !important;
+
+}
+.main-content-admin{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-teacher{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+.main-content-parents{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-student{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.provide-text{
+  margin-top: 60px !important;
+}
+
+/*.question-list li p{
+  font-size: 13px !important;
+}*/
+
+.freetrial{
+  margin-left: 7px !important;
+margin-top: 0px !important;
+}
+
+.livedemo{
+  margin-left: 11px !important;
+}
+
+
+
+
+     .or{
+  visibility: hidden;
+ }
+
+ .livedemo{
+  margin-left: 51px !important;
+ }
+
+ .freetrial{
+    margin-left:2px !important;
+  margin-top: 20px !important;
+ }
+
+    .video-container{
+     height: 330px !important;
+      width: 97% !important;
+      margin-top: 110px !important;
+      margin-left: -1px !important;
+      background-position: -73px 9px !important;
+    }
+    .video-icon{
+      margin-left: 188px !important;
+    }
+
+    .feature1 {
+      margin-left: 165px !important;
+  }
+}
+
+@media (min-width: 366px) and (max-width: 600px) {
+ /*body { border:10px solid pink; }*/
+
+ .videos-container{
+  width: 730px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+
+
+ .avatar{
+ margin-left: 125 !important;
+  margin-top: 12px !important;
+
+ }
+ .survey{
+    background-position: -740px -12px !important;
+ }
+ .survey-text{
+  font-size: 18px !important;
+ }
+
+ .featuer-content{
+  margin-left: 80px !important;
+ }
+
+ .system-container{
+  margin-top: 0px !important;
+ }
+
+ .faq{
+  margin-top: 0px !important;
+ }
+
+.btn-container{
+  text-align: center !important;
+}
+.main-title{
+  text-align: center !important;
+}
+.main-content-text{
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #1398CC !important;
+
+}
+.main-content-admin{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-student{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+.main-content-teacher{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-parents{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+
+
+  .or{
+  visibility: hidden;
+ }
+
+.freetrial{
+  margin-left: 7px !important;
+margin-top: 0px !important;
+}
+
+.livedemo{
+  margin-left: 11px !important;
+}
+
+.video-container{
+  width: 730px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+
+ .navbar-collapse{
+  margin-top: 13px;
+padding-top: 11px;
+ }
+ .sys-features{
+  margin-left: -150px;
+ }
+ .contact-button{
+  width: 150px;
+margin-top: -42px;
+ }
+
+ .main-content{
+  min-height: 410px;
+  background-position: -630px -110px;
+ }
+
+ .main-title{
+  font-size: 34px;
+color: #fff;
+margin-top: 70px;
+font-family: 'Lato-Regular';
+ }
+
+ .provide-text{
+  margin-top: 40px!important;
+ }
+
+ .sub-title{
+  font-size: 20px;
+ }
+ .video-icon{
+  margin-left: 222px !important;
+ }
+ .video-container{
+  height: 330px;
+width: 98% !important;
+margin-top: 110px;
+margin-left: -2px;
+background-position: -73px 9px;
+ }
+
+ .video-iframe{
+margin-left: -11px !important;
+width: 507px !important;
+ }
+ .devices-icon{
+ margin-top: -244px !important;
+margin-left: -1px !important;
+ }
+ 	
+  .feature1{
+   margin-left: 191px !important;
+  }
+  .second-title{
+    text-align: center;
+
+  }
+  .survey{
+    background-position: -754px -12px;
+    height: 348px;
+  }
+  .logo-footer{
+    margin-left: 55px !important;
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 360px) {
+/* body { border:10px solid orange; }*/
+
+.videos-container{
+  width: 748px !important;
+}
+
+.videos-container video{
+  margin-top: 0px !important;
+}
+
+ .avatar{
+  margin-left: 17px !important;
+  margin-top: 12px !important;
+
+ }
+ .survey{
+    background-position: -740px -12px !important;
+ }
+ .survey-text{
+  font-size: 18px !important;
+ }
+
+ .featuer-content{
+  margin-left: 80px !important;
+ }
+
+ .system-container{
+  margin-top: 0px !important;
+ }
+
+ .faq{
+  margin-top: 0px !important;
+ }
+
+.btn-container{
+  text-align: center !important;
+}
+.main-title{
+  text-align: center !important;
+  font-size: 33px !important;
+  margin-top: 80px !important;
+}
+.main-content-text{
+  text-align: center !important;
+  font-size: 15px !important;
+  color: #1398CC !important;
+
+}
+.main-content-admin{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-student{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-teacher{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.main-content-parents{
+ background-position: -153px -35px !important;
+ min-height: 514px !important;
+
+}
+
+.livedemo{
+  width: 247px !important;
+}
+.freetrial{
+  width: 247px !important;
+}
+
+
+
+ .navbar-collapse{
+  margin-top: 13px;
+padding-top: 11px;
+ }
+ .sys-features{
+  margin-left: -131px;
+ }
+ .contact-button{
+  width: 150px;
+margin-top: -42px;
+ }
+
+ .main-title{
+  font-size: 26px;
+  margin-top: 40px;
+ }
+
+ .sub-title{
+  font-size: 17px;
+  line-height: 21px;
+ }
+
+ .navbar-brand img{
+    width: 196px;
+    margin-top: 9px;
+ }
+  .video-icon{
+    margin-left: 84px !important;
+    margin-top: 13px !important;
+
+  }
+  .video-container{
+    height: 170px;
+    width: 48% !important;
+   margin-top: 167px !important;
+    margin-left: -18px;
+    background-position: -158px 9px;
+    background-image: none !important
+
+  }
+
+  .video-iframe{
+    margin-top: 9px;
+margin-left: -15px;
+height: 161px;
+width: 269px;
+  }
+  .devices-icon{
+    margin-top: -123px !important;
+    margin-left: -4px !important;
+  }
+  .main-content{
+    min-height: 420px;
+
+  }
+
+  .feature1{
+    margin-left: 52px !important;
+  }
+
+  .provide-text{
+    margin-top: 110px !important;
+  }
+
+  .second-title{
+    font-size: 15.9px;
+    text-align:  center;
+  }
+  .second-subtitle{
+    line-height: 18px !important;
+    font-size: 14px;
+  }
+
+  .question-list{
+    margin-top: 21px !important;
+  }
+
+  .question-list li{
+    margin-bottom: 43px !important;
+  }
+
+  .question-list li p {
+    font-size: 13px !important;
+  }
+
+  .survey{
+   background-position: -866px -12px !important;
+  }
+  .survey-text{
+    margin-top: 58px !important;
+    font-size: 14px !important;
+  }
+
+  .logo-footer{
+    margin-left: 8px !important;
+    margin-top: 30px !important;
+  }
+
+
+}
+/*end

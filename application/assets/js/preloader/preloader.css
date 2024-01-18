@@ -1,0 +1,38 @@
+#preloader-message{
+		     position: fixed;
+			  min-height: 53px;
+			  max-width: 300px;
+			  min-width: 300px;
+			  /* background-color: blue; */
+			  z-index: 999999;
+			  content: "test";
+			  margin-top: 51px;
+			  right: -337px;
+			  background: rgba(71, 164, 71, 0.95);
+			  border: 1px solid rgb(71, 164, 71) ;
+			  color: #fff;
+			  padding: 14px 0px!important;
+		} 
+		#preloader-message.response2{ /*info*/
+			 background: rgba(88,102,110, 0.95)!important;
+			  border: 1px solid rgb(88,102,110) !important;
+		}
+		#preloader-message.response1{ /*info*/
+			 background: rgba(240,80,80, 0.95)!important;
+			  border: 1px solid rgb(240,80,80) !important;
+		}
+		#preloader-message.pm-warning{
+			background: rgba(235, 147, 22, 0.8); /*orange*/
+			border:1px solid #e38d13;
+		}
+		#preloader-message.pm-danger{
+			background: rgba(193, 47, 42, 0.8); /*red*/
+			border:1px solid #b92c28;
+		}
+		#preloader-message.pm-info{
+			background: rgba(42, 171, 210, 0.8); /*red*/
+			border:1px solid #28a4c9;
+		}
+		#preloader-message a{
+		    color:#fff;
+		}

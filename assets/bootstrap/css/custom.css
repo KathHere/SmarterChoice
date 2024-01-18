@@ -1,0 +1,229 @@
+.main-wrapper{
+	background-color: #f4f4f4;
+	height: 100%;
+
+}
+
+.template-main-content{
+	background-color:#fff;
+	border-top:5px solid #298ebb !important;
+	border-radius: 4px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border: 1px solid #e9e9e9;
+	min-height: 630px;
+}
+
+.trustee-img{
+	margin-left: 66px;
+margin-top: 22px;
+margin-bottom: 30px;
+}
+
+.main-content{
+	background-color:#fff;
+	min-height: 580px;
+	border-top:5px solid #298ebb !important;
+	border-radius: 4px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border: 1px solid #e9e9e9;
+}
+
+
+.img-container{
+	margin-left: 68px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.header-img-container{
+	margin-left: 28px;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 23px;
+}
+
+h1{
+	font-family: 'Open Sans';
+	font-weight: 300;
+	text-align: center;
+	line-height: 45px;
+}
+
+
+label{
+	color:#029373;
+}
+ul{
+	list-style-type: none;
+	margin-top: 30px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 12px 0 0 !important;
+	margin-left: -20px !important;
+}
+li{
+	padding-bottom: 20px;
+	font-family: 'Open Sans';
+	font-weight: 300;
+	text-align: left;
+	font-size: 24px;
+}
+
+textarea{
+	margin-top:30px;
+	margin-bottom:30px;
+	min-height:200px;
+}
+
+.timer-img-container img{
+	margin-left: 150px;
+margin-top: 30px;
+}
+.form-group input{
+
+	height: 45px;
+	box-shadow: none !important;
+
+}
+
+.btn{
+	padding: 14px 40px !important;
+	padding-bottom: 40px !important;
+}
+
+.btn-default {
+	background-color: #03ae88 !important;
+background-image: none !important;
+height: 47px !important;
+border: 1px solid #049474 !important;
+color: #fff !important;
+border-bottom: 4px solid #049474 !important;
+font-family: 'Open Sans' !important;
+font-size: 20px;
+
+text-shadow: none !important;
+outline: none !important;
+}
+
+.terms a{
+	text-align: center;
+	margin-left: 43px;
+}
+
+.parts-container{
+	text-align: center;
+	margin-left: 40px;
+	margin-left: 180px;
+
+}
+
+.choices{
+	padding-left: 1px;
+}
+.control-label{
+	text-align: center !important;
+}
+
+.view-summary{
+	text-align:center;
+	margin-top:30px;
+	margin-left:30px;
+}
+
+.exam-over-text{
+	text-align:center;
+	font-size:16px;
+	font-family:'Open Sans';
+	font-size:400;
+}
+.score-text{
+	font-family:'Open Sans';
+	margin-left:25px;
+	font-size: 30px;
+}
+
+.exam-summary-logo-container{
+	margin-left: 82px;
+
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 23px;
+}
+
+.trust-logo img{
+
+	margin-left: 256px;
+margin-top: -135px;
+}
+
+
+/***************Admin CSS***************/
+.login-content{
+	min-height: 520px;
+	background-color:#fff;
+	border-top:5px solid #298ebb !important;
+	border-radius: 4px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border: 1px solid #e9e9e9;
+}
+
+.mini-box{
+	background-color: #f8f8f8 !important;
+	background-image: none !important;
+	border-color:#e6e6e6 !important; 
+	color:#6c6c6c;
+	min-height: 190px;
+
+}
+
+.mini-box img{
+	height: 90px;
+margin-top: 30px;
+margin-left: 14px;
+}
+
+.mini-box button{
+	padding:4px 16px !important;
+	padding-bottom: 7px !important;
+	font-size: 14px !important;
+	height: 36px !important;
+
+	margin-top: -73px;
+margin-left: 143px;
+}
+
+
+
+.user-text{
+	margin-left: 38px;
+	font-size: 25px;
+	font-family: Open Sans;
+	color: #333333;
+}
+
+.user-passers{
+	margin-left:48px;
+	font-size: 25px;
+	font-family: Open Sans;
+	color: #333333;
+}
+
+.user-failed{
+	margin-left:48px;
+	font-size: 25px;
+	font-family: Open Sans;
+	color: #333333;
+}
+.view-exam{
+
+}
+
+.timer-box{
+	background-image: url('../../images/box-timer.png');
+	background-repeat: no-repeat;
+	min-height: 113px;
+}

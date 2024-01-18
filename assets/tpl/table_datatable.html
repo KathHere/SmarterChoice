@@ -1,0 +1,61 @@
+<style type="text/css">
+  
+  input[type="search"]{
+
+    margin-left: 13px;
+
+  }
+
+  select.input-sm{
+    margin-left: 11px;
+margin-right: 11px;
+  }
+</style>
+
+
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Patient Order Summary</h1>
+</div>
+<div class="wrapper-md">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Order Summary
+    </div>
+    <div class="table-responsive">
+      <table ui-jq="dataTable" ui-options="{
+          sAjaxSource: 'js/jquery/datatables/datatable.json',
+          aoColumns: [
+            { mData: 'date' },
+            { mData: 'order' },
+            { mData: 'lastname' },
+            { mData: 'firstname' },
+            { mData: 'record' },
+            {mData: 'activity'},
+            {mData: 'organization'},
+            {mData: 'status'},
+            {mData: 'details'},
+            {mData: 'notes'},
+            {mData: 'action'},
+          ]
+        }" class="table table-striped m-b-none">
+        <thead>
+          <tr>
+            <th  style="width:10%">Date Ordered</th>
+            <th  style="width:15%">Work Order</th>
+            <th  style="width:15%">Patient Last Name</th>
+            <th  style="width:15%">Patient First Name</th>
+            <th  style="width:15%">Medical Record Number</th>
+            <th  style="width:10%">Activity Type</th>
+            <th  style="width:12%">Organization Name</th>
+            <th  style="width:10%">Status</th>
+            <th  style="width:15%">Details</th>
+            <th  style="width:15%">Notes</th>
+            <th  style="width:15%">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

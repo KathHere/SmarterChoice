@@ -1,0 +1,1356 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Patient Order Form</h1>
+</div>
+
+ <!--  <div class="col-sm-4">
+    logo
+  </div> -->
+
+  
+  <div class="col-sm-7 " style="margin-top:25px;">
+    <div class="alert ng-isolate-scope alert-info alert-dismissable" >
+      <button ng-show="closeable" type="button" class="close" ng-click="close()">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+      </button>
+      <div ng-transclude=""><span class="ng-binding ng-scope">
+
+      <h2 class="m-n font-thin h3">Having a hard time filling out the Patient Order Form ?</h2> <br>
+      Please call all orders / pickups to : (702) 248 - 0056 <br>
+      Please fax all Patient Order Forms to : (702) 889 - 0059</span></div>
+    </div>
+  </div>
+
+
+
+
+<div class="wrapper-md" ng-controller="FormDemoCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+
+
+
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Hospice Details</div>
+        <div class="panel-body">
+          <form role="form">
+            <div class="col-sm-6">
+             <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Customer Service Representative <span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="First Name">   
+                </div>
+                <div class="col-sm-6">
+                  <label> </label>
+                  <input type="text" style="margin-top: 5px;" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="Last Name">
+                 
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Hospice Provider <span class="text-danger-dker">*</span></label>
+                <select name="account" class="form-control m-b">
+                  <option value="option 1">Angel Eye Hospice</option>
+                  <option value="option 2">Compassion Care Hospice</option>
+                  <option value="option 3">Fountain Life Hospice</option>
+                  <option value="option 4">Hospice Del Sol</option>
+                  <option value="option 4">Southern Nevada Home and Hospice</option>
+                  <option value="option 4">Jireh Healthcare Services</option>
+                  <option value="option 4">Nevada Hospice Care</option>
+                </select>
+              </div>
+
+               <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Person Placing Order <span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="First Name">   
+                </div>
+                <div class="col-sm-6">
+                  <label> </label>
+                  <input type="text" style="margin-top: 5px;" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="Last Name">
+                 
+                </div>
+              </div>
+
+               <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Delivery Date <span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="Delivery Date">   
+                </div>
+                <div class="col-sm-6">
+                  <label>Delivery To<span class="text-danger-dker">*</span></label>
+                   <select name="account" class="form-control m-b">
+                  <option value="option 1">Home Care</option>
+                  <option value="option 2">Group Home</option>
+                  <option value="option 3">Assisted Living</option>
+                  <option value="option 4">Facility</option>
+                </select>
+                 
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top: 74px;">
+              <div class="form-group">
+                <label>Email address</label>
+                <input type="email" class="form-control" placeholder="Enter email">
+              </div>
+
+              <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Hospice Phone No. <span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="Hospice Phone No">   
+                </div>
+                <div class="col-sm-6">
+                  <label>Cellphone No. <span class="text-danger-dker">*</span></label>
+                  <input type="text" style="margin-top: 5px;" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="Cellphone No">
+                 
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Patient Medical Record No. <span class="text-danger-dker">*</span></label>
+                <input type="email" class="form-control" placeholder="Patient Medical Record No.">
+              </div>
+           <!--  <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked disabled><i></i> Check me out
+              </label>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button> -->
+            </div>
+
+            
+
+           <div class="col-sm-12">
+              <div class="col-sm-6" style="padding-left:0px;padding-right:0px;">
+                <div class="col-sm-6" style="padding-left:0px;">
+                  <div class="form-group">
+                   <label>Activity Type <span class="text-danger-dker">*</span></label>
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio" ><i></i>Delivery
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio" ><i></i>Exchange
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio"checked="" ><i></i>PT Move
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio" ><i></i>Respite
+                      </label>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-6" style="padding-left:10px;">
+
+                   <div class="form-group">
+                    <label>Pickup Date <span class="text-danger-dker">*</span></label>
+                    <input type="email" class="form-control" placeholder="Pickup Date">
+                  </div>
+                  <div class="form-group">
+                    <label>New Patient Address <span class="text-danger-dker">*</span></label>
+                    <input type="email" class="form-control" placeholder="Street Address">
+                  </div>
+                  <div class="form-group">
+                  
+                    <input type="email" class="form-control" placeholder="Apartment No, Room No, Unit No">
+                  </div>
+
+                  <div class="form-group pull-in clearfix">
+                    <div class="col-sm-6">
+                     
+                      <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="City">   
+                    </div>
+                    <div class="col-sm-6">
+                      
+                      <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="State / Province">
+                     
+                    </div>
+                  </div>
+                   <div class="form-group">
+                  
+                    <input type="email" class="form-control" placeholder="Postal Code">
+                  </div>
+
+              </div>
+              </div>
+              
+           </div>
+
+
+
+          
+        </div>
+      </div>
+
+
+      <!-- Patiner Info panel -->
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Patient Profile</div>
+        <div class="panel-body">
+          <form role="form">
+            <div class="col-sm-6">
+             <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Patient Name<span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="First Name">   
+                </div>
+                <div class="col-sm-6">
+                  <label> </label>
+                  <input type="text" style="margin-top: 5px;" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="Last Name">
+                 
+                </div>
+              </div>
+
+              <div class="form-group pull-in clearfix">
+                <div class="col-sm-6">
+                  <label>Height (ft)<span class="text-danger-dker">*</span></label>
+                  <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="First Name">   
+                </div>
+                <div class="col-sm-6">
+                  <label> Weight (lbs) <span class="text-danger-dker">*</span></label>
+                  <input type="text" style="margin-top: 5px;" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="Last Name">
+                 
+                </div>
+              </div>
+             
+
+               <div class="form-group">
+                    <label>New Patient Address <span class="text-danger-dker">*</span></label>
+                    <input type="email" class="form-control" placeholder="Street Address">
+                  </div>
+                  <div class="form-group">
+                  
+                    <input type="email" class="form-control" placeholder="Apartment No, Room No, Unit No">
+                  </div>
+
+                  <div class="form-group pull-in clearfix">
+                    <div class="col-sm-6">
+                     
+                      <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="City">   
+                    </div>
+                    <div class="col-sm-6">
+                      
+                      <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="State / Province">
+                     
+                    </div>
+                  </div>
+                   <div class="form-group">
+                  
+                    <input type="email" class="form-control" placeholder="Postal Code">
+                  </div>
+
+               
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Phone Number  <span class="text-danger-dker">*</span></label>
+                <input type="email" class="form-control" placeholder="Phone Numbe">
+              </div>
+
+              <div class="form-group">
+                <label>Alt. Phone Number <span class="text-danger-dker">*</span></label>
+                <input type="email" class="form-control" placeholder="Alt. Phone Number">
+              </div>
+
+            
+             <div class="form-group">
+              <label>Emergency Contact <span class="text-danger-dker">*</span></label><br>
+                <label>Next of Kin <span class="text-danger-dker">*</span></label>
+                <input type="email" class="form-control" placeholder="Full Name">
+              </div>
+
+              <div class="form-group">
+                <label>Next of Kin Phone Number <span class="text-danger-dker">*</span></label>
+                <input type="email" class="form-control" placeholder=" Phone Number">
+              </div>
+           <!--  <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked disabled><i></i> Check me out
+              </label>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button> -->
+            </div>
+
+            
+
+
+
+        
+        </div>
+      </div>
+
+       <!-- Equipments panel -->
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Equipment</div>
+        <div class="panel-body">
+
+
+          <div class="col-sm-6">
+
+            <button class="btn btn-default">Capped Equipments</button> <br>
+            <label style="margin-top:25px;">Capped Equipments <span class="text-danger-dker">*</span></label>
+            <div class="clearfix"></div>
+
+
+
+              <div class="col-sm-6" style="padding-left:0px;">
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+               APP Pump & Pad
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Commode 3 in 1
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Commode Bariatic
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Floor Mat
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Front Wheel Walker
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Gel Overlay
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Geri Chair
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Hospital Bed
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             IV Pole
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Low Air Loss Mattress
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Over Bed Table
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Oxygen Concentrator
+
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Oxygen Conserving Device
+              </label>
+            </div>
+            </div>
+
+            <div class="col-sm-6" style="padding-left:0px;">
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+               Oxygen E Portable System
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Patient Lift with Sling
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Quad Cane
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Rollator
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Shower Chair
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Shower Chair With Wheels
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Small Volume Nebulizer
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Suction Machine
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Trapeze Bar
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Wheelchair
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Wheelchair Oxygen Holder
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Wheelchair Reclining
+
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Wheelchair Seat Belt
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Wheelchair Transport
+              </label>
+            </div>
+            </div>
+
+
+
+
+
+
+          </div>
+
+            <div class="col-sm-4 col-sm-offset-2">
+            
+                <div class="panel panel-default">
+                   <div class="panel-heading font-bold">Order Summary</div>
+                  <div class="panel-body">
+
+                  </div>
+                </div>
+
+
+            </div>
+
+
+
+         
+          <div class="clearfix"></div>
+
+          <!-- non-capped equipments -->
+
+          <div class="col-sm-6" style="">
+
+              <button class="btn btn-default">Non-Capped Equipments</button><br>
+              <label style="margin-top:25px;">Non-Capped Equipments <span class="text-danger-dker">*</span></label>
+            <div class="clearfix"></div>
+
+            <div class="col-sm-6" style="padding-left:0px;">
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Alarm Bed
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Alarm Tab
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Alternating Pressure Pump
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             BIPAP
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Commode 3 in 1
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Commode Bariatric
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Commode Pail
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              CPAP
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Feeding Bags
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Feeding Pump
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Floor Mat
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Foot Cradle
+
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Front Wheel Walker
+              </label>
+            </div>
+
+            
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+               Front Wheel Walker Bariatric
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Gastric Suction Machine
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Gel Overlay
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Geri Chair with Tray
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Hemi Walker
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Hi-Low Full Electric Hospital Bed
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Hospital Bed
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Hospital Bed Bariatric
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            IV Pole
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Large Volume Nebulizer
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Low Air Loss Mattress
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+          Low Air Loss Mattress Bariatric
+
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Low Air Loss Mattress Turn Q
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Manual Low Bed
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+          Over Bed Table
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Oxygen Concentrator
+              </label>
+            </div>
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           Oxygen Concentrator Portable
+              </label>
+            </div>
+
+            </div>
+
+            <div class="col-sm-6" style="padding-left:0px;">
+               <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                    Oxygen Conserving Device
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Oxygen Cylinder Rack
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Oxygen Cylinder, E
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                 Oxygen Cylinder, M6
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Oxygen Dual E-Cart
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Oxygen E Portable System
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Oxygen Liquid Portable
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Oxygen Liquid Refill
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Oxygen Liquid Reservoir
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Patient Lift Sling
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Patient Lift with Sling
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Pulse Oximeter(Finger)
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Quad Cane
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                 Rollator
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Safety Perimeter
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Scale, Chair
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Scale, Hoyer
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Shower Chair
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Shower Chair With Wheels
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Small Volume Nebulizer
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Suction Machine
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Transfer Bench
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Trapeze Bar
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Ventilator
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Wheelchair
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Wheelchair 3" Gel Cushion
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Wheelchair Anti-Tippers
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Wheelchair Oxygen Holder
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Wheelchair Reclining
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Wheelchair Seat Belt
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Wheelchair Transport
+              </label>
+            </div>
+
+
+          </div>
+           
+
+            
+
+
+          </div>
+          <!-- end of non-capped equipments -->
+
+          <!-- disposable equipment -->
+          <div class="clearfix"></div>
+          <div class="col-sm-6">
+
+           <button class="btn btn-default">Disposable Equipments</button><br>
+           <label style="margin-top:25px;">Disposable Equipments <span class="text-danger-dker">*</span></label>
+            <div class="clearfix"></div>
+            
+            <div class="col-sm-6" style="padding-left:0px;">
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Adult Aerosol Mask
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Adult Nasal Cannula
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Anti Tippers
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Circuit, Peep Valve, T piece Adaptor
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Corrugated Tubing (7ft)
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             E Cylinder Wrench
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Feeding Bags
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              High Flow Nasal Cannula (6L & Higher)
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             High Flow O2 Humidifier Bottle
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+              Jet Nebulizers
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+             Nebulizer Kits (Mouthpiece)
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+            Non-Rebreather O2 Mask
+
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+           O2 Connector
+              </label>
+            </div>
+
+            
+                <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+               O2 Humidifier Bottle
+              </label>
+            </div>
+
+            </div>
+
+            <div class="col-sm-6" style="padding-left:0px;">
+               <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   O2 Mask
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  O2 Tubing 21FT
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  O2 Tubing 7FT
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                 Pediatric Aerosol Mask
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Pediatric Nasal Cannula
+              </label>
+            </div>
+
+              <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Pressure Line Adaptor
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Seat Belt
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Suction Canister
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Suction Tubing Long
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Suction Tubing Short
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Trach Mask
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                  Venturi Mask (Vent)
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                 X-Mas Tree Adaptor
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                Y Connector
+              </label>
+            </div>
+
+             <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" value="">
+                <i></i>
+                   Yankuer Suction Tubing
+              </label>
+            </div>
+
+           
+
+
+
+          </div>
+
+          <!-- special instructions -->
+         <div class="clearfix"></div>
+         <div class="col-sm-9" style="padding-left:0px;">
+            <div class="form-group">
+            
+                <label>Special Instructions <span class="text-danger-dker">*</span></label>
+                 <textarea class="form-control">
+                    
+                 </textarea>
+           
+          </div>
+         </div>
+          <!-- special instructions -->
+
+
+          
+
+            </div>
+
+            <!-- submit Order -->
+           <div class="clearfix"></div>
+          <button class="btn btn-success pull-right" >Submit Order</button>
+
+          <!-- submit Order -->
+          </div>
+          </form>
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+   
+  </div>
+ 

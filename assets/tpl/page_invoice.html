@@ -1,0 +1,289 @@
+<div class="bg-light lter b-b wrapper-md hidden-print">
+  <a href class="btn btn-sm btn-info pull-right" onClick="window.print();">Print</a>
+  <h1 class="m-n font-thin h3">Patient Profile</h1>
+</div>
+<div class="wrapper-md">
+  <div>
+    <i class=" icon-user fa fa-3x"></i>
+     <h4>Patient Medical Record No. P6619</h4>
+     <div class="well m-t bg-light lt">
+      <div class="row">
+        <div class="col-xs-6">
+          <strong>Patient Name</strong>
+          <h4>Mildred, Schneiberg</h4>
+          <strong>Patient Address</strong>
+          <p>
+            2nd Floor<br>
+            7300 Pirates Cove,<br>
+             Building 23 Apt 1079,<br>
+              Las Vegas, NV, 89145<br>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          <strong>Phone Number</strong>
+            <p>(702) 917-7167</p>
+          <strong>Alt. Phone Number</strong>
+            <p>(702) 917-7167</p>
+          <strong>Next of Kin</strong>
+            <p>Betsy Urban</p>
+          <strong>Next of Kin Phone Number</strong>
+            <p>(702) 917-7167</p>
+        </div>
+      </div>
+    </div>
+
+
+      <div ng-controller="AccordionDemoCtrl">
+        <accordion close-others="oneAtATime">
+          <accordion-group heading="Hospice Information"  is-disabled="status.isFirstDisabled">
+               <div class="row">
+      <div class="col-xs-6">
+       
+         <strong>Customer Service Representative</strong>
+        <p>Adminstrator, AHMS</p>
+
+         <strong>Organization</strong>
+        <p>Compassion Care Hospice</p>
+
+         <strong>Person Placing Order</strong>
+        <p>Tiller, Kris</p>
+
+         <strong>Email Address</strong>
+        <p>ktiller@cchlv.com</p>
+
+       
+      
+       
+      </div>
+      <div class="col-xs-6 " > 
+
+          <strong>Office Number</strong>
+        <p>(702) 248-0056</p>
+         <strong>Cellphone Number</strong>
+        <p>N/A</p> 
+
+         <strong>Delivery Date</strong>
+        <p>2014 - 10 - 17</p> 
+
+         <strong>Deliver to</strong>
+        <p>Home Care</p> 
+
+          
+      </div>
+    </div>
+   
+          </accordion-group>
+         
+        
+        
+        </accordion>
+        
+          </div>
+
+
+
+
+    <div class="col-sm-6" style="padding-left:0px;margin-top:25px;">
+      <div class="form-group">
+      <label>Activity Type</label>
+      <select class="form-control">
+        <option>Delivery</option>
+        <option>Pickup</option>
+      </select>
+    </div>
+    
+
+      <div class="form-group">
+        <label>New Patient Address <span class="text-danger-dker">*</span></label>
+        <input type="email" class="form-control" placeholder="Street Address">
+      </div>
+      <div class="form-group">
+      
+        <input type="email" class="form-control" placeholder="Apartment No, Room No, Unit No">
+      </div>
+
+      <div class="form-group pull-in clearfix">
+        <div class="col-sm-6">
+         
+          <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" name="password" ng-model="password" required="" placeholder="City">   
+        </div>
+        <div class="col-sm-6">
+          
+          <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-validator" name="confirm_password" required="" ng-model="confirm_password" ui-validate=" '$value==password' " ui-validate-watch=" 'password' "  placeholder="State / Province">
+         
+        </div>
+      </div>
+       <div class="form-group">
+      
+        <input type="email" class="form-control" placeholder="Postal Code">
+      </div>
+
+       <div class="form-group">
+        <label>Pickup Date <span class="text-danger-dker">*</span></label>
+        <input type="email" class="form-control" placeholder="Date Picker">
+      </div>
+
+      <!-- for pickup selection -->
+       <i><p>for pickup selection</p></i>
+        <div class="form-group">
+          <label>Pickup Reason <span class="text-danger-dker">*</span></label>
+         <select class="form-control">
+            <option>Expired</option>
+            <option>Discharged</option>
+            <option>Revoked</option>
+          </select>
+        </div>
+
+         <div class="form-group">
+          <label> Date <span class="text-danger-dker">*</span></label>
+          <input type="email" class="form-control" placeholder="Date Picker">
+        </div>
+
+     
+
+      <div ng-controller="ButtonsDemoCtrl" class="panel panel-default ng-scope">
+        <div class="panel-heading">
+          Patient Inventory
+        </div>
+        <div class="panel-body">
+          <div class="row">
+             
+              <div class="col-sm-12">
+                 <div class="checkbox">
+                  <label class="i-checks">
+                    <input type="checkbox"><i></i> Select All
+                  </label>
+                </div>
+
+                <div class="col-sm-6" style="padding-left:0px;">
+                    <p><strong>Capped Equipment</strong></p>
+                    <div class="checkbox">
+                        <label class="i-checks">
+                          <input type="checkbox"><i></i> APP Pump & Pad
+                        </label>
+                    </div>
+
+                     <div class="checkbox">
+                        <label class="i-checks">
+                          <input type="checkbox"><i></i>Commode 3 in 1
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <p><strong>Non-Capped Equipment</strong></p>
+
+                   <div class="checkbox">
+                        <label class="i-checks">
+                          <input type="checkbox" ><i></i> Alarm Bed
+                        </label>
+                    </div>
+
+                     <div class="checkbox">
+                        <label class="i-checks">
+                          <input type="checkbox" ><i></i>Alternating Pressure Pump
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-warning pull-right" style="margin-top:15px;">Save changes</button>
+              </div>
+            
+          </div>
+         
+        </div>
+      </div>
+
+       <!-- for pickup selection -->
+
+    </div>
+
+
+
+    
+    <div class="line"></div>
+    <table class="table table-striped bg-white b-a">
+      <thead>
+        <tr>
+          <th style="width: 60px">Delivery Date</th>
+          <th style="width: 40px">WO#</th>
+          <th style="width: 60px">Item #</th>
+          <th style="width: 90px">Activity Type</th>
+          <th style="width: 90px">Equipment Type</th>
+          <th style="width: 90px">Serial #</th>
+          <th style="width: 90px">Lot #</th>
+          <th style="width: 20px">Quantity</th>
+          <th style="width: 50px">Capped</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+           <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+          <td><label class="label label-success">Capped</label></td>
+        </tr>
+        <tr>
+            <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+           <td><label class="label label-success">Capped</label></td>
+        </tr>
+        <tr>
+          <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+          <td><label class="label label-warning">Non-Capped</label></td>
+        </tr>
+        <tr>
+            <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+           <td><label class="label label-warning">Non-Capped</label></td>
+        </tr>
+        <tr>
+          <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+           <td><label class="label label-success">Capped</label></td>
+        </tr>
+        <tr>
+          <td>10/22/2014</td>
+          <td>WO8738475</td>
+          <td>O2-001</td>
+          <td>Delivery</td>
+          <td>Oxygen Concentrator</td>
+          <td>5644646</td>
+          <td>None</td>
+          <td>1</td>
+           <td><label class="label label-warning">Non-Capped</label></td>
+        </tr>
+      </tbody>
+    </table>              
+  </div>
+</div>
