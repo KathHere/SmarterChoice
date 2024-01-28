@@ -291,7 +291,7 @@
               </li>
               <li ui-sref-active="active"  >
                 <a href="<?php echo base_url() ?>billing_reconciliation/payment_history/">
-                  <span> History</span>
+                  <span>Payment History</span>
                 </a>
               </li>
               <li ui-sref-active="active"  >
