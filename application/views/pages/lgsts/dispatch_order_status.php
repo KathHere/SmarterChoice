@@ -13,7 +13,7 @@
                     <i class="fas fa-box" style="opacity: 0.4;"></i>
                     </div>
                     <div class="col px-4">
-                    <h3 class="m-0">Dispatch Order Statussss</h3>
+                    <h3 class="m-0">Dispatch Order Status</h3>
                     </div>
                 </div>
                 </div><!-- /.col -->
