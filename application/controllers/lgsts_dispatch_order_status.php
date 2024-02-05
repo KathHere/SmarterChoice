@@ -136,7 +136,9 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 				echo json_encode(array(
 					"data"		=> $data['dispatch_order_status_list'],
 					"error" 	=> 0,
-					"message"	=> $stop_number_body->message
+					//"message"	=> $stop_number_body->message
+					"message" => $orders_body->message
+
 				));
 			}
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {
