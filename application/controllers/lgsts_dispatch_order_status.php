@@ -15,7 +15,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 		$this->load->library('encryption');
 	}
 
-    public function order_list()
+  	public function order_list($page = 1)
 	{
 		$lgsts_user = $this->session->userdata('lgsts_user');
 		$current_date = date("Y-m-d");
@@ -86,15 +86,30 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 					'Authorization' => 'Bearer ' . $lgsts_user['user_token']
 				],
 				'query' => [
-					'page' => 1,
-					'limit' => 30
+					'page' => $page, // Use the page parameter
+					'limit' =>10
 				]
 			]);
 			$orders_body = json_decode($orders->getBody());
 
 			if($orders->getStatusCode() == 200) {
 				$data['dispatch_order_status_list'] = $orders_body->data;
+				$pagination_info = $orders_body->data->paginationInfo;
+				$number_of_results = $pagination_info->numberOfResults;
+				$number_of_pages = $pagination_info->numberOfPages;
+				$current_page = $pagination_info->currentPage;
+				$results_per_page = $pagination_info->resultsPerPage;
+
+				// Pass pagination data to your view
+				$data['pagination'] = [
+					'number_of_results' => $number_of_results,
+					'number_of_pages' => $number_of_pages,
+					'current_page' => $current_page,
+					'results_per_page' => $results_per_page
+				];
+
 			}
+			
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {
 			$orders_error = $e->getResponse()->getBody()->getContents();
 		}
@@ -107,7 +122,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 		$this->templating_library->set_view('common/lgsts-footer','common/lgsts-footer');
 	}
 
-	public function search_dispatch_work_orders($search_string= '')
+	public function search_dispatch_work_orders($search_string= '', $page = 1)
 	{
 		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
@@ -126,13 +141,29 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 				],
 				'query' => [
 					'locationId' => $lgsts_user['account_location'],
-					'searchQuery' => $search_string
+					'searchQuery' => $search_string,
+					'page' => $page, // Add page parameter
+					'limit' => 10
 				]
 			]);
 			$orders_body = json_decode($orders->getBody());
 
 			if($orders->getStatusCode() == 200) {
 				$data['dispatch_order_status_list'] = $orders_body->data;
+				  // Update pagination information based on the new search results
+            $pagination_info = $orders_body->data->paginationInfo;
+            $number_of_results = $pagination_info->numberOfResults;
+            $number_of_pages = $pagination_info->numberOfPages;
+            $current_page = $pagination_info->currentPage;
+            $results_per_page = $pagination_info->resultsPerPage;
+
+            // Pass updated pagination data to your view
+            $data['pagination'] = [
+                'number_of_results' => $number_of_results,
+                'number_of_pages' => $number_of_pages,
+                'current_page' => $current_page,
+                'results_per_page' => $results_per_page
+            ];
 				echo json_encode(array(
 					"data"		=> $data['dispatch_order_status_list'],
 					"error" 	=> 0,

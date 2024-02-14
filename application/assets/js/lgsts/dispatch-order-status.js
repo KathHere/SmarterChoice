@@ -12,10 +12,12 @@ $(document).ready(function(){
     $('#search-dispatch-work-orders').bind('keyup',function(){
         var searchString = $(this).val();
 
-        if(globalTimeout != null) clearTimeout(globalTimeout);
-        globalTimeout =setTimeout(getInfoFunc,1100);
+        if (globalTimeout != null) clearTimeout(globalTimeout);
+        globalTimeout = setTimeout(function() {
+            getInfoFunc(searchString, 1); // Pass searchString and pageNumber
+        }, 1100);
 
-        function getInfoFunc(){
+        function getInfoFunc(searchString, pageNumber){
             globalTimeout = null;
             if(searchString.length >= 3){
                 $('body').find('#search-dispatch-work-orders-button').attr("disabled","disabled");
@@ -23,7 +25,7 @@ $(document).ready(function(){
                 
                 $.ajax({
                     type:"POST",
-                    url:base_url+'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString='+searchString,
+                    url: base_url + 'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString=' + searchString + '&page=' + pageNumber, // Pass page number
                     success: function(response) {
                       
                         var data = JSON.parse(response);
@@ -375,4 +377,4 @@ $(document).ready(function(){
       
         return false;
       });
-});
+});  

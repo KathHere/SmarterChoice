@@ -1,4 +1,37 @@
+<style>
+    .custom-pagination-btn {
+    background-color: white;
+    border-radius: 0; /* Remove border radius */
+    border: -2px solid #ccc; /* Add border */
+    color: #428bca;
+    }
+    .custom-pagination-btn:hover {
+        background-color: #eaedee;
+        color:#428bca;
+    }
+    .dataTables_paginate {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .pagination > .active > .custom-pagination-btn {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
+    }
 
+    .paginate_button.disabled{
+        background-color: #fff;
+        color:#777 !important;
+        cursor: not-allowed !important;
+        
+    }
+    .container {
+    max-width: 5000px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */ 
+    }
+</style>
      <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper"> 
     
@@ -306,11 +339,42 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
 
+        <div class="container">
+                <div class="row bootstrap-dt-container">
+                    <div class="col-sm-12 col-md-6">
+                    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+                        <?php
+                        $start_entry = ($pagination['current_page'] - 1) * $pagination['results_per_page'] + 1;
+                        $end_entry = min($pagination['current_page'] * $pagination['results_per_page'], $pagination['number_of_results']);
+                        ?>
+                        Showing <?php echo $start_entry; ?> to <?php echo $end_entry; ?> of <?php echo $pagination['number_of_results']; ?> entries
+                    </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 justify-content-end d-flex">
+                        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button <?php echo ($pagination['current_page'] == 1) ? 'disabled' : ''; ?>" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous">
+                                    <button type="button" class="btn btn-link custom-pagination-btn <?php echo ($pagination['current_page'] == 1) ? 'disabled' : ''; ?>" onclick="goToPage(<?php echo ($pagination['current_page'] > 1) ? $pagination['current_page'] - 1 : 1; ?>)">Previous</button>
+                                </li>
+                                <?php for ($i = 1; $i <= $pagination['number_of_pages']; $i++) { ?>
+                                    <li class="paginate_button <?php echo ($pagination['current_page'] == $i) ? 'active' : ''; ?>" aria-controls="DataTables_Table_0" tabindex="0">
+                                        <button type="button" class="btn btn-link custom-pagination-btn" onclick="goToPage(<?php echo $i; ?>)"><?php echo $i; ?></button>
+                                    </li>
+                                <?php } ?>
+                                <li class="paginate_button <?php echo ($pagination['current_page'] == $pagination['number_of_pages']) ? 'disabled' : ''; ?>" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_next">
+                                    <button type="button" class="btn btn-link custom-pagination-btn <?php echo ($pagination['current_page'] == $pagination['number_of_pages']) ? 'disabled' : ''; ?>" onclick="goToPage(<?php echo ($pagination['current_page'] < $pagination['number_of_pages']) ? $pagination['current_page'] + 1 : $pagination['number_of_pages']; ?>)">Next</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <br/><br/><br/>
         </div>
@@ -377,3 +441,13 @@
             </div>
         </div>
     </div>
+  <!--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+  <script>
+    function goToPage(page) {
+        // Add the 'clicked' class to the button
+        event.target.classList.add('clicked');
+        $('body').find('#dispatch-work-orders-table').find('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> Retrieving Data... <i class='fa fa-spin fa-spinner'></i> </td></tr>");
+        // Redirect to the specified page
+        window.location.href = '<?php echo base_url("lgsts_dispatch_order_status/order_list"); ?>/' + page;
+    }
+</script>

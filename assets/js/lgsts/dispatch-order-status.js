@@ -12,10 +12,12 @@ $(document).ready(function(){
     $('#search-dispatch-work-orders').bind('keyup',function(){
         var searchString = $(this).val();
 
-        if(globalTimeout != null) clearTimeout(globalTimeout);
-        globalTimeout =setTimeout(getInfoFunc,1100);
+        if (globalTimeout != null) clearTimeout(globalTimeout);
+        globalTimeout = setTimeout(function() {
+            getInfoFunc(searchString, 1); // Pass searchString and pageNumber
+        }, 1100);
 
-        function getInfoFunc(){
+        function getInfoFunc(searchString, pageNumber){
             globalTimeout = null;
             if(searchString.length >= 3){
                 $('body').find('#search-dispatch-work-orders-button').attr("disabled","disabled");
@@ -23,18 +25,20 @@ $(document).ready(function(){
                 
                 $.ajax({
                     type:"POST",
-                    url:base_url+'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString='+searchString,
+                    url: base_url + 'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString=' + searchString + '&page=' + pageNumber, // Pass page number
                     success: function(response) {
-                        // Parse the JSON response
+                      
                         var data = JSON.parse(response);
-                        
+                    
+                    
                         $('#dispatch-work-orders-table-tbody').empty();
                     
-                        // Check if there are orders to display
-                        if (data && data.data && data.data.orders && data.data.orders.length > 0) {
+                       
+                        if (data && data.data && data.data.orders && data.data.orders.length > 0){
 
+                        
                             $.each(data.data.orders, function(index, workOrder) {
-                              
+                                // Combine workOrder number and providerName
                                 var providerWorkOrder = `${workOrder.workOrder}`;
                                 var activityStyle = `style="letter-spacing: .3px;"`;
                                 var dispatch_order_status_list = getDriverData();
@@ -70,17 +74,17 @@ $(document).ready(function(){
 
                                 // Assign dropdown HTML
                                 var assignDropdown = `<div class="dropdown">
-                                    <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0 nowrap" aria-expanded="false">
-                                        ${(!workOrder.driverAssignedId || workOrder.driverAssignedId === '') ?
-                                            '<i class="far fa-user"></i> <i class="fas fa-caret-down"></i>'
-                                            : `${workOrder.driverLName.toUpperCase()}${workOrder.driverFName ? `, ${workOrder.driverFName.toUpperCase()}` : ''}`
-                                        }
-                                    </button>
-                                    <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
-                                        ${dropdownMenu}
-                                    </div>
+                                <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0 nowrap" aria-expanded="false">
+                                    ${(!workOrder.driverAssignedId || workOrder.driverAssignedId === '') ?
+                                        '<i class="far fa-user"></i> <i class="fas fa-caret-down"></i>'
+                                        : `${workOrder.driverLName.toUpperCase()}${workOrder.driverFName ? `, ${workOrder.driverFName.toUpperCase()}` : ''}`
+                                    }
+                                </button>
+                                <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
+                                    ${dropdownMenu}
+                                </div>
                                 </div>`;
-
+                                
                                 // Append a new row to the table
                                 $('#dispatch-work-orders-table-tbody').append(`
                                     <tr class="bg-white">
@@ -144,6 +148,7 @@ $(document).ready(function(){
                                 `);
                             });
                             
+                            // Function to simulate dynamic driver data fetching
                             function getDriverData() {
                                 return [
                                     { id: 5, firstName: "Ernest", lastName: "Camello", userType: "driver", routeName: "Demo1" },
@@ -166,7 +171,7 @@ $(document).ready(function(){
                         $('#search-dispatch-work-orders-button').removeAttr('disabled');
                     },
                     
-                    error:function(_jqXHR, textStatus, errorThrown)
+                    r:function(_jqXHR, textStatus, errorThrown)
                     {
                         console.log(textStatus, errorThrown);
                     }
@@ -372,4 +377,4 @@ $(document).ready(function(){
       
         return false;
       });
-});
+});  
