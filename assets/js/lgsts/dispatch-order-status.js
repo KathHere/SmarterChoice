@@ -27,6 +27,7 @@ $(document).ready(function(){
                     type:"POST",
                     url: base_url + 'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString=' + searchString + '&page=' + pageNumber, // Pass page number
                     success: function(response) {
+                          console.log(response);
                       
                         var data = JSON.parse(response);
                     
@@ -43,23 +44,27 @@ $(document).ready(function(){
                                 var activityStyle = `style="letter-spacing: .3px;"`;
                                 var dispatch_order_status_list = getDriverData();
                                 
-                                var dropdownMenu = '';
+                                let dropdownMenu = '';
 
-                                // If not assigned, add 'Pending' to the list of drivers
-                                dropdownMenu += `
-                                    <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver">
-                                        <span class="text-info">
-                                            ${(!workOrder.driverAssignedId || workOrder.driverAssignedId == '') ?
-                                                `<i style="color: #17a2b8" class="far fa-user mr-2"></i>`
-                                                : `<i style="opacity: 0.4; color: #000" class="far fa-user mr-2"></i>`
-                                            }
-                                            <span style="color: ${(!workOrder.driverAssignedId || workOrder.driverAssignedId == '') ? '#17a2b8' : '#000'}">Pending</span>
-                                        </span>
-                                    </a>`;
-                                
-                                // Append other drivers to the dropdown menu
+                                if (!workOrder.driverAssignedId || workOrder.driverAssignedId === '') {
+                                    dropdownMenu += `
+                                        <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver">
+                                            <span class="text-info"><i style="color: #17a2b8" class="far fa-user mr-2"></i> Pending</span>
+                                        </a>
+                                    `;
+                                } else {
+                                    dropdownMenu += `
+                                        <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
+                                            data-driver-id="0" 
+                                            data-id="${workOrder.statusId}"
+                                            data-route-name="${workOrder.routeName}"
+                                            data-unique-id="${workOrder.uniqueId}">
+                                            <i style="opacity:0.4;" class="far fa-user mr-2"></i> Pending
+                                        </a>
+                                    `;
+                                }
                                 dropdownMenu += dispatch_order_status_list.map(driver => {
-                                    const isDriverAssigned = driver.id == workOrder.driverAssignedId;
+                                    const isDriverAssigned = driver.id === workOrder.driverAssignedId;
                                     return `
                                         <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
                                             data-driver-id="${driver.id}" 
@@ -67,12 +72,11 @@ $(document).ready(function(){
                                             data-route-name="${driver.routeName}"
                                             data-unique-id="${workOrder.uniqueId}">
                                             ${isDriverAssigned ? `<i style="color: #17a2b8" class="fas fa-check mr-2"></i>` : ''}
-                                            ${isDriverAssigned ? '' : (!workOrder.driverAssignedId || workOrder.driverAssignedId == '' ? '<i style="opacity:0.4" class="fas fa-user mr-2"></i>' : '<i style="opacity:0.4" class="fas fa-user mr-2"></i>')}
+                                            ${isDriverAssigned ? '' : '<i style="opacity:0.4" class="fas fa-user mr-2"></i>'}
                                             ${isDriverAssigned ? `<span style="color: #17a2b8">${driver.lastName}, ${driver.firstName}</span>` : `${driver.lastName}, ${driver.firstName}`}
                                         </a>`;
                                 }).join('');
 
-                                // Assign dropdown HTML
                                 var assignDropdown = `<div class="dropdown">
                                 <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0 nowrap" aria-expanded="false">
                                     ${(!workOrder.driverAssignedId || workOrder.driverAssignedId === '') ?
@@ -84,7 +88,7 @@ $(document).ready(function(){
                                     ${dropdownMenu}
                                 </div>
                                 </div>`;
-                                
+
                                 // Append a new row to the table
                                 $('#dispatch-work-orders-table-tbody').append(`
                                     <tr class="bg-white">
@@ -161,10 +165,17 @@ $(document).ready(function(){
                                     { id: 84, firstName: "Dyson", lastName: "Astor", userType: "driver", routeName: null }
                                 ];
                             }
+                            var start_entry = (data.pagination.current_page - 1) * data.pagination.results_per_page + 1;
+                            var end_entry = Math.min(data.pagination.current_page * data.pagination.results_per_page, data.pagination.number_of_results);
+        
+                            $('.dataTables_info').html('Showing ' + start_entry + ' to ' + end_entry + ' of ' + data.pagination.number_of_results + ' entries');
+                            $('.dataTables_paginate').html(data.pagination.html);
 
                         } else {
                             // Display a message if there are no orders
                             $('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> No work orders. </td></tr>");
+                            $('.dataTables_info').html('Showing 0 to 0 of 0 entries');
+                            $('.dataTables_paginate').html(''); // Remove pagination UI
                         }
                     
                         // Enable the search button

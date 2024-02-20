@@ -97,9 +97,8 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 				$pagination_info = $orders_body->data->paginationInfo;
 				$number_of_results = $pagination_info->numberOfResults;
 				$number_of_pages = $pagination_info->numberOfPages;
-				$current_page = $pagination_info->currentPage;
-				$results_per_page = $pagination_info->resultsPerPage;
-
+				$current_page = intval($pagination_info->currentPage);
+				$results_per_page = intval($pagination_info->resultsPerPage);				
 				// Pass pagination data to your view
 				$data['pagination'] = [
 					'number_of_results' => $number_of_results,
@@ -132,7 +131,6 @@ Class lgsts_dispatch_order_status extends Ci_Controller
         if (isset($_GET['searchString'])) {
             $search_string = $_GET['searchString'];
         }
-
 		try {
 			$orders = $client->request('GET', 'dispatch/orders', [
 				'headers' => [ 
@@ -147,28 +145,28 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 				]
 			]);
 			$orders_body = json_decode($orders->getBody());
-
 			if($orders->getStatusCode() == 200) {
 				$data['dispatch_order_status_list'] = $orders_body->data;
-				  // Update pagination information based on the new search results
-            $pagination_info = $orders_body->data->paginationInfo;
-            $number_of_results = $pagination_info->numberOfResults;
-            $number_of_pages = $pagination_info->numberOfPages;
-            $current_page = $pagination_info->currentPage;
-            $results_per_page = $pagination_info->resultsPerPage;
+				$pagination_info = $orders_body->data->paginationInfo;
+				$number_of_results = $pagination_info->numberOfResults;
+				$number_of_pages = $pagination_info->numberOfPages;
+				$current_page = intval($pagination_info->currentPage);
+				$results_per_page = intval($pagination_info->resultsPerPage);
 
-            // Pass updated pagination data to your view
-            $data['pagination'] = [
+				
+				
+				$data['pagination'] = [
                 'number_of_results' => $number_of_results,
                 'number_of_pages' => $number_of_pages,
                 'current_page' => $current_page,
-                'results_per_page' => $results_per_page
-            ];
+                'results_per_page' => $results_per_page,
+				
+			];
 				echo json_encode(array(
 					"data"		=> $data['dispatch_order_status_list'],
 					"error" 	=> 0,
-					//"message"	=> $stop_number_body->message
-					"message" => $orders_body->message
+					"message" => $orders_body->message,
+					"pagination" => $data['pagination']
 
 				));
 			}
