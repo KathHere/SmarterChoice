@@ -16,182 +16,169 @@ $(document).ready(function(){
         globalTimeout = setTimeout(function() {
             getInfoFunc(searchString, 1); // Pass searchString and pageNumber
         }, 1100);
-
-        function getInfoFunc(searchString, pageNumber){
-            globalTimeout = null;
-            if(searchString.length >= 3){
-                $('body').find('#search-dispatch-work-orders-button').attr("disabled","disabled");
-                $('body').find('#dispatch-work-orders-table').find('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> Retrieving Data... <i class='fa fa-spin fa-spinner'></i> </td></tr>");
-                
-                $.ajax({
-                    type:"POST",
-                    url: base_url + 'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString=' + searchString + '&page=' + pageNumber, // Pass page number
-                    success: function(response) {
-                          console.log(response);
-                      
-                        var data = JSON.parse(response);
-                    
-                    
-                        $('#dispatch-work-orders-table-tbody').empty();
-                    
-                       
-                        if (data && data.data && data.data.orders && data.data.orders.length > 0){
-
-                        
-                            $.each(data.data.orders, function(index, workOrder) {
-                                // Combine workOrder number and providerName
-                                var providerWorkOrder = `${workOrder.workOrder}`;
-                                var activityStyle = `style="letter-spacing: .3px;"`;
-                                var dispatch_order_status_list = getDriverData();
-                                
-                                let dropdownMenu = '';
-
-                                if (!workOrder.driverAssignedId || workOrder.driverAssignedId === '') {
-                                    dropdownMenu += `
-                                        <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver">
-                                            <span class="text-info"><i style="color: #17a2b8" class="far fa-user mr-2"></i> Pending</span>
-                                        </a>
-                                    `;
-                                } else {
-                                    dropdownMenu += `
-                                        <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
-                                            data-driver-id="0" 
-                                            data-id="${workOrder.statusId}"
-                                            data-route-name="${workOrder.routeName}"
-                                            data-unique-id="${workOrder.uniqueId}">
-                                            <i style="opacity:0.4;" class="far fa-user mr-2"></i> Pending
-                                        </a>
-                                    `;
-                                }
-                                dropdownMenu += dispatch_order_status_list.map(driver => {
-                                    const isDriverAssigned = driver.id === workOrder.driverAssignedId;
-                                    return `
-                                        <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
-                                            data-driver-id="${driver.id}" 
-                                            data-id="${workOrder.statusId}"
-                                            data-route-name="${driver.routeName}"
-                                            data-unique-id="${workOrder.uniqueId}">
-                                            ${isDriverAssigned ? `<i style="color: #17a2b8" class="fas fa-check mr-2"></i>` : ''}
-                                            ${isDriverAssigned ? '' : '<i style="opacity:0.4" class="fas fa-user mr-2"></i>'}
-                                            ${isDriverAssigned ? `<span style="color: #17a2b8">${driver.lastName}, ${driver.firstName}</span>` : `${driver.lastName}, ${driver.firstName}`}
-                                        </a>`;
-                                }).join('');
-
-                                var assignDropdown = `<div class="dropdown">
-                                <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0 nowrap" aria-expanded="false">
-                                    ${(!workOrder.driverAssignedId || workOrder.driverAssignedId === '') ?
-                                        '<i class="far fa-user"></i> <i class="fas fa-caret-down"></i>'
-                                        : `${workOrder.driverLName.toUpperCase()}${workOrder.driverFName ? `, ${workOrder.driverFName.toUpperCase()}` : ''}`
-                                    }
-                                </button>
-                                <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
-                                    ${dropdownMenu}
-                                </div>
-                                </div>`;
-
-                                // Append a new row to the table
-                                $('#dispatch-work-orders-table-tbody').append(`
-                                    <tr class="bg-white">
-                                        <td ${workOrder.isUrgent == 1 ? 'style="border-left: 7px solid #ffc107 !important;"' : ''}>
-                                            <div class="d-flex">
-                                                <div class="pt-2 h5"><i class="fas fa-box" style="opacity: 0.4;"></i></div>
-                                                <div class="col px-3">
-                                                    <a href="javascript:void(0)" class="lgsts_view_work_order_details" title="Click to View Order Details" style="cursor:pointer; color:#1f2d3d;" 
-                                                        data-unique-id="${workOrder.uniqueId}"
-                                                        data-medical-record-id="${workOrder.medicalRecordId}"
-                                                        data-patient-id="${workOrder.patientId}"
-                                                        data-hospice-id="${workOrder.hospiceId}"
-                                                        data-original-activity-type-id="${workOrder.originalActivityTypeId}">
-                                                        <strong>${providerWorkOrder}</strong>
-                                                    </a>
-                                                    <div class="text-uppercase">${workOrder.providerName}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <strong>${workOrder.customerLastName}${workOrder.driverAssignedId == '' ? '' : ','} ${workOrder.customerFirstName}</strong>
-                                            <div>${workOrder.streetAddress}, ${workOrder.placenumAddress}, ${workOrder.cityAddress}, ${workOrder.stateAddress}, ${workOrder.postalAddress}</div>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong ${activityStyle} class=" px-3 py-1 rounded text-sm text-uppercase text-info bg-gray-light">
-                                                ${workOrder.activityType}
-                                            </strong>
-                                        </td>
-                                        <td class="text-right">
-                                            ${assignDropdown}
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown">
-                                                <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0">
-                                                    <i class="fas fa-ellipsis-v"></i> &nbsp;<i class="fas fa-caret-down"></i>
-                                                </button>
-                                                <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
-                                                    <a href="javascript:void(0)" class="dropdown-item py-2 text-warning set_work_order_urgency"
-                                                        data-id="${workOrder.statusId}" 
-                                                        data-unique-id="${workOrder.uniqueId}"
-                                                        data-isUrgent="${workOrder.isUrgent}">
-                                                        <span class="text-warning">
-                                                            <i style="opacity:0.4;" class="fas fa-exclamation-triangle mr-2"></i> URGENCY
-                                                        </span>
-                                                    </a>
-                                                    ${workOrder.driverAssignedId != '' ?
-                                                        `<a href="javascript:void(0)" class="dropdown-item py-2 text-info set_work_order_stop_number" data-stop-number="${workOrder.stopNumber}" data-id="${workOrder.statusId}">
-                                                            <span class="text-info">
-                                                                <i style="opacity:0.4;" class="fas fa-hashtag mr-2"></i>${workOrder.stopNumber} STOP NUMBER
-                                                            </span>
-                                                        </a>` : ''}
-                                                    <a href="javascript:void(0)" class="dropdown-item py-2 send_work_order_to_cos" data-id="${workOrder.statusId}">
-                                                        <span class="text-info">
-                                                            <i style="opacity:0.4;" class="fas fa-info-circle mr-2"></i> SEND TO COS
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                `);
-                            });
-                            
-                            // Function to simulate dynamic driver data fetching
-                            function getDriverData() {
-                                return [
-                                    { id: 5, firstName: "Ernest", lastName: "Camello", userType: "driver", routeName: "Demo1" },
-                                    { id: 6, firstName: "Rhys", lastName: "Barriga", userType: "screener_and_driver", routeName: null },
-                                    { id: 75, firstName: "Khianna", lastName: "Buendia", userType: "driver", routeName: null },
-                                    { id: 76, firstName: "Aamon", lastName: "Seares", userType: "driver", routeName: null },
-                                    { id: 77, firstName: "Alyanna", lastName: "Llamas", userType: "driver", routeName: "TEST" },
-                                    { id: 78, firstName: "Rory1", lastName: "Chin", userType: "driver", routeName: "Test%204" },
-                                    { id: 83, firstName: "Amaya", lastName: "Ronda", userType: "driver", routeName: null },
-                                    { id: 84, firstName: "Dyson", lastName: "Astor", userType: "driver", routeName: null }
-                                ];
-                            }
-                            var start_entry = (data.pagination.current_page - 1) * data.pagination.results_per_page + 1;
-                            var end_entry = Math.min(data.pagination.current_page * data.pagination.results_per_page, data.pagination.number_of_results);
         
-                            $('.dataTables_info').html('Showing ' + start_entry + ' to ' + end_entry + ' of ' + data.pagination.number_of_results + ' entries');
-                            $('.dataTables_paginate').html(data.pagination.html);
+        function getDriversList(onCallType, currentDate) {
+            var driversList = [];
 
+            return driversList;
+        }
+        
+        function getInfoFunc(searchString, pageNumber, driversList) {
+            globalTimeout = null;
+            if (searchString.length >= 3) {
+                $('body').find('#search-dispatch-work-orders-button').attr("disabled", "disabled");
+                $('body').find('#dispatch-work-orders-table').find('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> Retrieving Data... <i class='fa fa-spin fa-spinner'></i> </td></tr>");
+            
+                $.ajax({
+                type: "POST",
+                url: base_url + 'lgsts_dispatch_order_status/search_dispatch_work_orders/?searchString=' + searchString + '&page=' + pageNumber, // Pass page number
+                success: function (response) {
+                    console.log(response);
+                    var data = JSON.parse(response);
+            
+                    $('#dispatch-work-orders-table-tbody').empty();
+            
+                    if (data && data.data && data.data.orders && data.data.orders.length > 0) {
+            
+                    $.each(data.data.orders, function (index, workOrder) {
+                        // Combine workOrder number and providerName
+                        var providerWorkOrder = `${workOrder.workOrder}`;
+                        var activityStyle = `style="letter-spacing: .3px;"`;
+                        var dispatch_order_status_list = [];
+                        let dropdownMenu = '';
+            
+                        if (!workOrder.driverAssignedId || workOrder.driverAssignedId === '') {
+                        dropdownMenu += `
+                            <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver">
+                                <span class="text-info"><i style="color: #17a2b8" class="far fa-user mr-2"></i> Pending</span>
+                            </a>
+                        `;
                         } else {
-                            // Display a message if there are no orders
-                            $('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> No work orders. </td></tr>");
-                            $('.dataTables_info').html('Showing 0 to 0 of 0 entries');
-                            $('.dataTables_paginate').html(''); // Remove pagination UI
+                        dropdownMenu += `
+                            <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
+                                data-driver-id="0" 
+                                data-id="${workOrder.statusId}"
+                                data-route-name="${workOrder.routeName}"
+                                data-unique-id="${workOrder.uniqueId}">
+                                <i style="opacity:0.4;" class="far fa-user mr-2"></i> Pending
+                            </a>
+                        `;
                         }
-                    
-                        // Enable the search button
-                        $('#search-dispatch-work-orders-button').removeAttr('disabled');
-                    },
-                    
-                    r:function(_jqXHR, textStatus, errorThrown)
-                    {
-                        console.log(textStatus, errorThrown);
+                    dropdownMenu += data.data.drivers.map(driver => {
+                        const isDriverAssigned = driver.id === workOrder.driverAssignedId;
+                        return `
+                            <a href="javascript:void(0)" class="dropdown-item py-2 set_work_order_driver" 
+                                data-driver-id="${driver.id}" 
+                                data-id="${workOrder.statusId}"
+                                data-route-name="${driver.routeName}"
+                                data-unique-id="${workOrder.uniqueId}">
+                                ${isDriverAssigned ? `<i style="color: #17a2b8" class="fas fa-check mr-2"></i>` : ''}
+                                ${isDriverAssigned ? '' : '<i style="opacity:0.4" class="fas fa-user mr-2"></i>'}
+                                ${isDriverAssigned ? `<span style="color: #17a2b8">${driver.lastName}, ${driver.firstName}</span>` : `${driver.lastName}, ${driver.firstName}`}
+                            </a>`;
+                    }).join('');
+
+                        var assignDropdown = `<div class="dropdown">
+                        <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0 nowrap" aria-expanded="false">
+                            ${(!workOrder.driverAssignedId || workOrder.driverAssignedId === '') ?
+                            '<i class="far fa-user"></i> <i class="fas fa-caret-down"></i>'
+                            : `${workOrder.driverLName.toUpperCase()}${workOrder.driverFName ? `, ${workOrder.driverFName.toUpperCase()}` : ''}`
+                            }
+                        </button>
+                        <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
+                            ${dropdownMenu}
+                        </div>
+                        </div>`;
+            
+                        // Append a new row to the table
+                        $('#dispatch-work-orders-table-tbody').append(`
+                            <tr class="bg-white">
+                                <td ${workOrder.isUrgent == 1 ? 'style="border-left: 7px solid #ffc107 !important;"' : ''}>
+                                    <div class="d-flex">
+                                        <div class="pt-2 h5"><i class="fas fa-box" style="opacity: 0.4;"></i></div>
+                                        <div class="col px-3">
+                                            <a href="javascript:void(0)" class="lgsts_view_work_order_details" title="Click to View Order Details" style="cursor:pointer; color:#1f2d3d;" 
+                                                data-unique-id="${workOrder.uniqueId}"
+                                                data-medical-record-id="${workOrder.medicalRecordId}"
+                                                data-patient-id="${workOrder.patientId}"
+                                                data-hospice-id="${workOrder.hospiceId}"
+                                                data-original-activity-type-id="${workOrder.originalActivityTypeId}">
+                                                <strong>${providerWorkOrder}</strong>
+                                            </a>
+                                            <div class="text-uppercase">${workOrder.providerName}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <strong>${workOrder.customerLastName}${workOrder.driverAssignedId == '' ? '' : ','} ${workOrder.customerFirstName}</strong>
+                                    <div>${workOrder.streetAddress}, ${workOrder.placenumAddress}, ${workOrder.cityAddress}, ${workOrder.stateAddress}, ${workOrder.postalAddress}</div>
+                                </td>
+                                <td class="text-center">
+                                    <strong ${activityStyle} class=" px-3 py-1 rounded text-sm text-uppercase text-info bg-gray-light">
+                                        ${workOrder.activityType}
+                                    </strong>
+                                </td>
+                                <td class="text-right">
+                                    ${assignDropdown}
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <button style="min-width: 47px;" data-toggle="dropdown" class="btn btn-sm btn-outline-info rounded-0">
+                                            <i class="fas fa-ellipsis-v"></i> &nbsp;<i class="fas fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-menu bg-white py-0 dropdown-menu-right">
+                                            <a href="javascript:void(0)" class="dropdown-item py-2 text-warning set_work_order_urgency"
+                                                data-id="${workOrder.statusId}" 
+                                                data-unique-id="${workOrder.uniqueId}"
+                                                data-isUrgent="${workOrder.isUrgent}">
+                                                <span class="text-warning">
+                                                    <i style="opacity:0.4;" class="fas fa-exclamation-triangle mr-2"></i> URGENCY
+                                                </span>
+                                            </a>
+                                            ${workOrder.driverAssignedId != '' ?
+                                            `<a href="javascript:void(0)" class="dropdown-item py-2 text-info set_work_order_stop_number" data-stop-number="${workOrder.stopNumber}" data-id="${workOrder.statusId}">
+                                                <span class="text-info">
+                                                    <i style="opacity:0.4;" class="fas fa-hashtag mr-2"></i>${workOrder.stopNumber} STOP NUMBER
+                                                </span>
+                                            </a>` : ''}
+                                            <a href="javascript:void(0)" class="dropdown-item py-2 send_work_order_to_cos" data-id="${workOrder.statusId}">
+                                                <span class="text-info">
+                                                    <i style="opacity:0.4;" class="fas fa-info-circle mr-2"></i> SEND TO COS
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        `);
+                    });
+            
+                    var start_entry = (data.pagination.current_page - 1) * data.pagination.results_per_page + 1;
+                    var end_entry = Math.min(data.pagination.current_page * data.pagination.results_per_page, data.pagination.number_of_results);
+            
+                    $('.dataTables_info').html('Showing ' + start_entry + ' to ' + end_entry + ' of ' + data.pagination.number_of_results + ' entries');
+                    $('.dataTables_paginate').html(data.pagination.html);
+            
+                    } else {
+                    // Display a message if there are no orders
+                    $('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> No work orders. </td></tr>");
+                    $('.dataTables_info').html('Showing 0 to 0 of 0 entries');
+                    $('.dataTables_paginate').html(''); // Remove pagination UI
                     }
+            
+                    // Enable the search button
+                    $('#search-dispatch-work-orders-button').removeAttr('disabled');
+                },
+            
+                r: function (_jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
                 });
-                
+            
             } else {
                 $('body').find('#search-dispatch-work-orders-button').removeAttr('disabled');
             }
-        }
+            }
     });
 
     $('#dispatch-work-orders-table-tbody').on('click','.set_work_order_urgency', function(){

@@ -14,6 +14,32 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 		$this->load->model("order_model");
 		$this->load->library('encryption');
 	}
+	public function getDriversList()
+	{
+		$lgsts_user = $this->session->userdata('lgsts_user');
+		$current_date = date("Y-m-d");
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		try {
+			$response = $client->request('GET', 'dispatch/getOnCallUsers', [
+				'headers' => [
+					'Accept' => 'application/json',
+					'Authorization' => 'Bearer ' . $lgsts_user['user_token']
+				],
+				'query' => [
+					'onCallType' => 'driver',
+					'date' => $current_date
+				]
+			]);
+
+			$body = json_decode($response->getBody());
+			if ($response->getStatusCode() == 200) {
+				return $body->data->onCallUsers;
+			
+		} 
+		} catch (GuzzleHttp\Exception\BadResponseException $e) {
+			return ['error' => 'Error fetching drivers: ' . $e->getMessage()];
+		}
+	}
 
   	public function order_list($page = 1)
 	{
