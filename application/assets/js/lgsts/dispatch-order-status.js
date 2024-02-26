@@ -17,13 +17,7 @@ $(document).ready(function(){
             getInfoFunc(searchString, 1); // Pass searchString and pageNumber
         }, 1100);
 
-        function getDriversList(onCallType, currentDate) {
-            var driversList = [];
-
-            return driversList;
-        }
-        
-        function getInfoFunc(searchString, pageNumber, driversList) {
+        function getInfoFunc(searchString, pageNumber) {
             globalTimeout = null;
             if (searchString.length >= 3) {
               $('body').find('#search-dispatch-work-orders-button').attr("disabled", "disabled");
@@ -44,7 +38,6 @@ $(document).ready(function(){
                       // Combine workOrder number and providerName
                       var providerWorkOrder = `${workOrder.workOrder}`;
                       var activityStyle = `style="letter-spacing: .3px;"`;
-                      var dispatch_order_status_list = [];
                       let dropdownMenu = '';
           
                       if (!workOrder.driverAssignedId || workOrder.driverAssignedId === '') {
