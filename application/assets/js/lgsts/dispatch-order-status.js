@@ -14,7 +14,7 @@ $(document).ready(function(){
 
         if (globalTimeout != null) clearTimeout(globalTimeout);
         globalTimeout = setTimeout(function() {
-            getInfoFunc(searchString, 1); // Pass searchString and pageNumber
+            getInfoFunc(searchString, 1);
         }, 1100);
 
         function getInfoFunc(searchString, pageNumber) {
@@ -35,7 +35,6 @@ $(document).ready(function(){
                   if (data && data.data && data.data.orders && data.data.orders.length > 0) {
           
                     $.each(data.data.orders, function (index, workOrder) {
-                      // Combine workOrder number and providerName
                       var providerWorkOrder = `${workOrder.workOrder}`;
                       var activityStyle = `style="letter-spacing: .3px;"`;
                       let dropdownMenu = '';
