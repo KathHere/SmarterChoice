@@ -79,26 +79,46 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 			$on_call_users_error = $e->getResponse()->getBody()->getContents();
 		}
 
-		try {
-			$orders = $client->request('GET', 'dispatch/orders', [
-				'headers' => [ 
-					'Accept' => 'application/json',
-					'Authorization' => 'Bearer ' . $lgsts_user['user_token']
-				],
-				'query' => [
-					'page' => $page, // Use the page parameter
-					'limit' =>10
-				]
-			]);
+			try {
+			// Get the search string from the query parameters
+			$searchString = $this->input->get('searchString');
+	
+			// Check if a search query is present
+			if (!empty($searchString)) {
+				$orders = $client->request('GET', 'dispatch/orders', [
+					'headers' => [ 
+						'Accept' => 'application/json',
+						'Authorization' => 'Bearer ' . $lgsts_user['user_token']
+					],
+					'query' => [
+						'page' => $page, // Use the page parameter
+						'limit' => 10,
+						'searchQuery' => $searchString // Pass search query to the API
+					]
+				]);
+			} else {
+				// Make the API request without the search query
+				$orders = $client->request('GET', 'dispatch/orders', [
+					'headers' => [ 
+						'Accept' => 'application/json',
+						'Authorization' => 'Bearer ' . $lgsts_user['user_token']
+					],
+					'query' => [
+						'page' => $page, // Use the page parameter
+						'limit' => 10
+					]
+				]);
+			}
+	
 			$orders_body = json_decode($orders->getBody());
-
+	
 			if($orders->getStatusCode() == 200) {
 				$data['dispatch_order_status_list'] = $orders_body->data;
 				$pagination_info = $orders_body->data->paginationInfo;
 				$number_of_results = $pagination_info->numberOfResults;
 				$number_of_pages = $pagination_info->numberOfPages;
 				$current_page = intval($pagination_info->currentPage);
-				$results_per_page = intval($pagination_info->resultsPerPage);				
+				$results_per_page = intval($pagination_info->resultsPerPage);                
 				// Pass pagination data to your view
 				$data['pagination'] = [
 					'number_of_results' => $number_of_results,
@@ -106,7 +126,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 					'current_page' => $current_page,
 					'results_per_page' => $results_per_page
 				];
-
+	
 			}
 			
 		} catch (GuzzleHttp\Exception\BadResponseException $e) {

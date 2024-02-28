@@ -1,7 +1,10 @@
 $(document).ready(function(){
+    var searchString = new URLSearchParams(window.location.search).get('searchString');    
+    // Set the value of the search input field
+    $('#search-dispatch-work-orders').val(searchString);
     $('#search-dispatch-work-orders').bind('keyup',function(){
-        $(this).css("text-transform","uppercase");
-
+        $(this).val($(this).val().toUpperCase());
+     
         if($(this).val() == '')
         {
             $(this).css("text-transform","none");
@@ -17,6 +20,32 @@ $(document).ready(function(){
             getInfoFunc(searchString, 1); 
         }, 1100);
         
+        if (searchString === '') {
+            // If search string is empty, redirect to default page
+            goToPage(1);
+        }
+         // Function to update the pagination
+         function updatePagination(currentPage, totalPages) {
+            // Generate the pagination buttons based on the total number of pages
+            var paginationButtons = '';
+            if (totalPages > 0) {
+                paginationButtons += '<li class="paginate_button ' + ((currentPage === 1) ? 'disabled' : '') + '" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous">';
+                paginationButtons += '<button type="button" class="btn btn-link custom-pagination-btn disabled" onclick="goToPage(' + (currentPage - 1) + ')">Previous</button>';
+                paginationButtons += '</li>';
+                for (var i = 1; i <= totalPages; i++) {
+                    paginationButtons += '<li class="paginate_button ' + ((i === currentPage) ? 'active' : '') + '" aria-controls="DataTables_Table_0" tabindex="0">';
+                    paginationButtons += '<button type="button" class="btn btn-link custom-pagination-btn" onclick="goToPage(' + i + ')">' + i + '</button>';
+                    paginationButtons += '</li>';
+                }
+                paginationButtons += '<li class="paginate_button ' + ((currentPage === totalPages) ? 'disabled' : '') + '" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_next">';
+                paginationButtons += '<button type="button" class="btn btn-link custom-pagination-btn ' + ((currentPage === totalPages) ? 'disabled' : '') + '" onclick="goToPage(' + (currentPage + 1) + ')">Next</button>';
+                paginationButtons += '</li>';
+            }
+
+            // Update the pagination element with the generated buttons
+            $('.pagination').html(paginationButtons);
+        }
+       
         function getInfoFunc(searchString, pageNumber) {
             globalTimeout = null;
             if (searchString.length >= 3) {
@@ -150,12 +179,14 @@ $(document).ready(function(){
             
                     $('.dataTables_info').html('Showing ' + start_entry + ' to ' + end_entry + ' of ' + data.pagination.number_of_results + ' entries');
                     $('.dataTables_paginate').html(data.pagination.html);
+                    updatePagination(pageNumber, data.pagination.number_of_pages);
+
             
                     } else {
                     // Display a message if there are no orders
                     $('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> No work orders. </td></tr>");
                     $('.dataTables_info').html('Showing 0 to 0 of 0 entries');
-                    $('.dataTables_paginate').html(''); // Remove pagination UI
+                    $('.dataTables_paginate').html('<ul class="pagination"><li class="paginate_button disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_previous"><button type="button" class="btn btn-link custom-pagination-btn disabled">Previous</button></li><li class="paginate_button disabled" aria-controls="DataTables_Table_0" tabindex="0" id="DataTables_Table_0_next"><button type="button" class="btn btn-link custom-pagination-btn disabled">Next</button></li></ul>');
                     }
             
                     // Enable the search button

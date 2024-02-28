@@ -38,6 +38,15 @@
     margin: 0 auto; /* Center the container horizontally */ 
 
     }
+    .pagination .disabled button {
+        background-color: white; /* Set background color to white */
+    }
+
+    /* Style for the disabled buttons on hover */
+    .pagination .disabled button:hover {
+        cursor: not-allowed !important; /* Change cursor to not-allowed */
+    }
+
 </style>
      <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper"> 
@@ -449,12 +458,13 @@
         </div>
     </div>
   <!--  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-  <script>
+<script>
     function goToPage(page) {
         // Add the 'clicked' class to the button
         event.target.classList.add('clicked');
         $('body').find('#dispatch-work-orders-table').find('#dispatch-work-orders-table-tbody').html("<tr class='bg-white'> <td colspan='5' class='text-center'> Retrieving Data... <i class='fa fa-spin fa-spinner'></i> </td></tr>");
-        // Redirect to the specified page
-        window.location.href = '<?php echo base_url("lgsts_dispatch_order_status/order_list"); ?>/' + page;
-    }
+         var searchString = $('#search-dispatch-work-orders').val();
+        // Redirect to the specified page with the search query parameter
+        window.location.href = '<?php echo base_url("lgsts_dispatch_order_status/order_list"); ?>/' + page + '?searchString=' + searchString;
+        }
 </script>
