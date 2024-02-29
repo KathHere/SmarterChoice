@@ -1,42 +1,33 @@
 <style>
     .custom-pagination-btn {
-    background-color: white;
-    border-radius: 0; /* Remove border radius */
-    border: -2px solid #ccc; /* Add border */
-    color: #428bca;
-
+        background-color: white;
+        border-radius: 0; /* Remove border radius */
+        border: -2px solid #ccc; /* Add border */
+        color: #428bca;
     }
     .custom-pagination-btn:hover {
-    background-color: #eaedee;
-    color:#428bca;
-
+        background-color: #eaedee;
+        color:#428bca;
     }
     .dataTables_paginate {
-    display: flex;
-    justify-content: flex-end;
-
+        display: flex;
+        justify-content: flex-end;
     }
     .pagination > .active > .custom-pagination-btn {
-
-    z-index: 2;
-    color: #fff;
-    cursor: default;
-    background-color: #428bca;
-    border-color: #428bca;
+        z-index: 2;
+        color: #fff;
+        cursor: default;
+        background-color: #428bca;
+        border-color: #428bca;
     }
-
     .paginate_button.disabled{
-        
-    background-color: #fff;
-    color:#777 !important;
-    cursor: not-allowed !important;
-        
+        background-color: #fff;
+        color:#777 !important;
+        cursor: not-allowed !important;
     }
     .container {
-
-    max-width: 5000px; /* Set a maximum width for the container */
-    margin: 0 auto; /* Center the container horizontally */ 
-
+        max-width: 5000px; /* Set a maximum width for the container */
+        margin: 0 auto; /* Center the container horizontally */ 
     }
     .pagination .disabled button {
         background-color: white; /* Set background color to white */
