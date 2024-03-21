@@ -36,7 +36,7 @@ Class main extends Ci_Controller
 		$username = $data_post['username'];
 		$password = $data_post['password'];
 
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		try {
 			$login = $client->request('POST', 'auth/login', [
 				'headers' => [ 

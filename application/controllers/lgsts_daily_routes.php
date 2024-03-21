@@ -18,7 +18,7 @@ Class lgsts_daily_routes extends Ci_Controller
 	{
 		$lgsts_user = $this->session->userdata('lgsts_user');
 		$data['daily_routes'] = array();
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 
 		try {
 			$daily_routes = $client->request('GET', 'route', [
@@ -46,7 +46,7 @@ Class lgsts_daily_routes extends Ci_Controller
 
 	public function submit_route_name_autosave($routeId, $routeName)
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 
 		try {
