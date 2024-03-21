@@ -20,7 +20,7 @@ Class lgsts_driver_order_list extends Ci_Controller
 		$current_date = date("Y-m-d");
 		$data['driver_order_list_info'] = array();
 		$data['driver_order_list_work_orders'] = array();
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 
 		try {
 			$on_call_users = $client->request('GET', 'dispatch/getOnCallUsers', [

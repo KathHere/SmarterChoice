@@ -17,7 +17,7 @@ Class lgsts_route_sheet extends Ci_Controller
     public function details($route_id = 0)
 	{
 		$lgsts_user = $this->session->userdata('lgsts_user');
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 
 		try {
 			$route_details = $client->request('GET', 'route/details', [

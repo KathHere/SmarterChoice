@@ -21,7 +21,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 		$current_date = date("Y-m-d");
 		$data['dispatch_order_status_info'] = array();
 		$data['dispatch_order_status_list'] = array();
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 
 		try {
 			$order_counters = $client->request('GET', 'dispatch/orderCounters', [
@@ -143,7 +143,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 
 	public function search_dispatch_work_orders($search_string= '', $page = 1)
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 		$data['dispatch_order_status_list'] = array();
 
@@ -198,7 +198,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 
 	public function update_work_order_urgency($statusId, $uniqueId, $is_urgent) 
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 		
 		$is_urgent_final = false;
@@ -234,7 +234,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 
 	public function set_work_order_stop_number($statusId, $stopNumber) 
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 
 		try {
@@ -264,7 +264,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 
 	public function send_work_order_to_COS($statusId) 
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 
 		try {
@@ -293,7 +293,7 @@ Class lgsts_dispatch_order_status extends Ci_Controller
 
 	public function assign_work_order_to_driver($statusId, $uniqueId, $driverId, $routeName) 
 	{
-		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.smarterchoice.us/api/v1/']);
+		$client = new GuzzleHttp\Client(['base_uri' => 'https://api.dmefy.com/api/v1/']);
 		$lgsts_user = $this->session->userdata('lgsts_user');
 
 		if ($routeName == null) {
