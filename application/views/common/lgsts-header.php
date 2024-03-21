@@ -112,8 +112,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <span class="dropdown-item dropdown-header"></span>
                         <div class="dropdown-divider"></div>
+                        <a href="<?php echo base_url('lgsts_users/profile') ?>" class="dropdown-item py-2">
+                            <i class="fas fa-user-circle"></i>
+                            <span style="margin-left: 3%;"></span>Profile
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a href="<?php echo base_url('lgsts_users/add_user') ?>" class="dropdown-item py-2">
-                            <i class="fas fa-user-plus mr-2"></i> Add New User 
+                            <i class="fas fa-user-plus mr-2"></i> 
+                             <span style="margin-left: -1%;"></span>Add New User 
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="<?php echo base_url('main/lgsts_logout') ?>" class="dropdown-item py-2">
