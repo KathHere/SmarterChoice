@@ -154,7 +154,7 @@
 
                                 <div class="col-12 text-center">
                                     <br/>
-                                    <button id="saveChangesBtn" class="btn btn-info rounded-0 text-uppercase px-5">
+                                    <button id="saveChangesButton" class="btn btn-info rounded-0 text-uppercase px-5">
                                         <i class='fas fa-save mr-2'></i> Save Changes
                                     </button>
                                     <br/><br/>
@@ -171,62 +171,93 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-
-        var assignLocationDropdownBtn = document.getElementById('assignLocationDropdownBtn');
-        var assignLocationDropdownMenu = document.getElementById('assignLocationDropdownMenu');
-        assignLocationDropdownMenu.addEventListener('click', function(event) {
-
-            if (event.target.classList.contains('dropdown-item')) {
-
-                var selectedLocation = event.target.getAttribute('data-location');
-
-                assignLocationDropdownBtn.innerText = selectedLocation;
-            }
+    
+    $(document).ready(function(){
+        var currentUser = '<?php echo $lgsts_user["username"]; ?>';
+        var editedUserInfoKey = 'editedUserInfo_' + currentUser;
+        var editedUserInfo = localStorage.getItem(editedUserInfoKey);
+        
+        if (editedUserInfo) {
+        editedUserInfo = JSON.parse(editedUserInfo);
+     
+        $('input[name="first_name"]').val(editedUserInfo.first_name);
+        $('input[name="last_name"]').val(editedUserInfo.last_name);
+        $('input[name="username"]').val(editedUserInfo.username);
+        $('input[name="password"]').val(editedUserInfo.password);
+        $('input[name="mobile_number"]').val(editedUserInfo.mobile_number);
+        $('input[name="onCall"][value="' + editedUserInfo.onCall + '"]').prop('checked', true);
+        $('#userTypeDropdownBtn').html(editedUserInfo.userType + '&nbsp;<i class="fas float-right mt-1 fa-caret-down"></i>');
+        $('#assignLocationDropdownBtn').html(editedUserInfo.assignLocation + '&nbsp;<i class="fas float-right mt-1 fa-caret-down"></i>');
+ 
+        $('.navbar .nav-item.dropdown.user-menu .nav-link .nav-name').text(editedUserInfo.first_name + ' ' + editedUserInfo.last_name.charAt(0) + '.');
+        $('.navbar .nav-item.dropdown.user-menu .nav-full-name').text(editedUserInfo.first_name + ' ' + editedUserInfo.last_name);     
+        $('.navbar .nav-item.dropdown.user-menu .text-center.pt-2 div').text(editedUserInfo.userType);
+       
+    }
+        // Assign Location Dropdown
+        $('#assignLocationDropdownMenu a').click(function(){
+            var selectedLocation = $(this).data('location');
+            $('#assignLocationDropdownBtn').html(selectedLocation + '&nbsp;<i class="fas float-right mt-1 fa-caret-down"></i>');
+            
+            editedUserInfo.assignLocation = selectedLocation;
+            localStorage.setItem(editedUserInfoKey, JSON.stringify(editedUserInfo));
         });
 
-        var userTypeDropdownBtn = document.getElementById('userTypeDropdownBtn');
-        var userTypeDropdownMenu = document.getElementById('userTypeDropdownMenu');
-        userTypeDropdownMenu.addEventListener('click', function(event) {
+        $('#userTypeDropdownMenu a').click(function(){
+            var selectedUserType = $(this).data('user-type');
+            selectedUserType = selectedUserType.replace(/_/g, ' ');
+            selectedUserType = selectedUserType.replace(/\b\w/g, function(match) {
+                return match.toUpperCase();
+            });
+            selectedUserType = selectedUserType.replace(" And ", " & "); 
+            $('#userTypeDropdownBtn').html(selectedUserType + '&nbsp;<i class="fas float-right mt-1 fa-caret-down"></i>');
+            editedUserInfo.userType = selectedUserType;
+                localStorage.setItem(editedUserInfoKey, JSON.stringify(editedUserInfo));
+        });
 
-            if (event.target.classList.contains('dropdown-item')) {
-
-                var selectedUserType = event.target.getAttribute('data-user-type');
+        // Save Changes Button Click Event
+        $('#saveChangesButton').click(function() {
+        jConfirm('Save Changes?', 'Reminder', function(response) {
+            if (response) {
                 
-                userTypeDropdownBtn.innerText = event.target.innerText;
+                var userInfo = {
+                    first_name: $('input[name="first_name"]').val(),
+                    last_name: $('input[name="last_name"]').val(),
+                    username: $('input[name="username"]').val(),
+                    password: $('input[name="password"]').val(),
+                    mobile_number: $('input[name="mobile_number"]').val(),
+                    onCall: $('input[name="onCall"]:checked').val(),
+                    assignLocation: $('#assignLocationDropdownBtn').text().trim(),
+                    userType: $('#userTypeDropdownBtn').text().trim()
+                };
+
+                $.ajax({
+                    url: '<?php echo base_url("lgsts_users/update_user_info"); ?>',
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(userInfo),
+                    success: function(response) {
+                
+                        jAlert('Changes saved successfully.', 'Success', function() {
+                            location.reload(); 
+                        
+                            console.log('Success alert was closed.');
+                        });
+
+                        localStorage.setItem(editedUserInfoKey, JSON.stringify(userInfo));
+                    },
+                    error: function(xhr, status, error) {
+                       
+                        alert('Error occurred while saving changes.');
+                        console.error(error);
+                    }
+                });
+            } else {
+
             }
         });
-
-        $('#saveChangesBtn').click(function() {
-            // Trigger the confirmation dialog
-            jConfirm('Save Changes?', 'Reminder', function(response) {
-                if (response) {
-                    saveChanges();
-                }
-            });
-        });
-
-        // Function to handle saving changes
-        function saveChanges() {
-            $.ajax({
-                url: 'lgsts_users/save_profile_changes', 
-                type: 'POST',
-                data: {},
-                beforeSend: function() {
-                    // Show loading spinner or other indication that changes are being saved
-                },
-                success: function(response) {
-
-                    alert('Profile changes saved successfully');
-                },
-                error: function(xhr, status, error) {
-
-                    console.error(xhr.responseText);
-                }
-            });
-        }
     });
-
+});
 </script>

@@ -10,6 +10,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <title>SmarterChoice Logistics</title>
 
         <!-- Google Font: Source Sans Pro -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome Icons -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/all.min.css">
@@ -78,55 +81,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item  dropdown user-menu">
-                    <a href="#" class="nav-link dropdown-toggle text-uppercase" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user-circle mr-2" style="opacity:0.4;"></i>
-                        <span> <?php echo $lgsts_user['first_name']; ?> <?php echo substr($lgsts_user['last_name'],0,1); ?>.</span>
-                        <i class="fas fa-caret-down"></i>
-                    </a> 
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
-                        <div class="pt-3 text-center px-4">
-                            <i class="fas fa-user-circle" style="opacity:0.4; font-size: 40px;"></i>
-                        </div>
-                        <div class="text-center pt-2 text-uppercase">
-                            <span><?php echo $lgsts_user['first_name']; ?> <?php echo $lgsts_user['last_name']; ?></span> 
-                            <div style="letter-spacing: 0.3px;">
-                                <?php 
-                                    if ($lgsts_user['user_type'] == 'super_admin') {
-                                        echo "SUPER ADMIN";
-                                    } else if ($lgsts_user['user_type'] == 'admin') {
-                                        echo "ADMIN";
-                                    } else if ($lgsts_user['user_type'] == 'dispatcher') {
-                                        echo "DISPATCHER";
-                                    } else if ($lgsts_user['user_type'] == 'screener') {
-                                        echo "SCREENER";
-                                    } else if ($lgsts_user['user_type'] == 'driver') {
-                                        echo "DRIVER";
-                                    } else if ($lgsts_user['user_type'] == 'screener_and_driver') {
-                                        echo "SCREENER & DRIVER";
-                                    }
-                                ?>
-                            </div>
-                        </div>
-                        <span class="dropdown-item dropdown-header"></span>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?php echo base_url('lgsts_users/profile') ?>" class="dropdown-item py-2">
-                            <i class="fas fa-user-circle"></i>
-                            <span style="margin-left: 3%;"></span>Profile
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?php echo base_url('lgsts_users/add_user') ?>" class="dropdown-item py-2">
-                            <i class="fas fa-user-plus mr-2"></i> 
-                             <span style="margin-left: -1%;"></span>Add New User 
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="<?php echo base_url('main/lgsts_logout') ?>" class="dropdown-item py-2">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout 
-                        </a>
-                    </div>
-                </li>
-            </ul>
+            <!-- Right navbar links -->
+<ul class="navbar-nav ml-auto">
+    <!-- Messages Dropdown Menu -->
+    <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle text-uppercase" data-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle mr-2" style="opacity:0.4;"></i>
+            <span class="nav-name"> <?php echo $lgsts_user['first_name']; ?> <?php echo substr($lgsts_user['last_name'],0,1); ?>.</span>
+            <i class="fas fa-caret-down"></i>
+        </a> 
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right ">
+            <div class="pt-3 text-center px-4">
+                <i class="fas fa-user-circle" style="opacity:0.4; font-size: 40px;"></i>
+            </div>
+            <div class="text-center pt-2 text-uppercase">
+                <span class="nav-full-name"><?php echo $lgsts_user['first_name']; ?> <?php echo $lgsts_user['last_name']; ?></span> 
+                <div style="letter-spacing: 0.3px;">
+                    <?php 
+                        if ($lgsts_user['user_type'] == 'super_admin') {
+                            echo "SUPER ADMIN";
+                        } else if ($lgsts_user['user_type'] == 'admin') {
+                            echo "ADMIN";
+                        } else if ($lgsts_user['user_type'] == 'dispatcher') {
+                            echo "DISPATCHER";
+                        } else if ($lgsts_user['user_type'] == 'screener') {
+                            echo "SCREENER";
+                        } else if ($lgsts_user['user_type'] == 'driver') {
+                            echo "DRIVER";
+                        } else if ($lgsts_user['user_type'] == 'screener_and_driver') {
+                            echo "SCREENER & DRIVER";
+                        }
+                    ?>
+                </div>
+            </div>
+            <span class="dropdown-item dropdown-header"></span>
+            <div class="dropdown-divider"></div>
+            <a href="<?php echo base_url('lgsts_users/profile') ?>" class="dropdown-item py-2">
+                <i class="fas fa-user-circle"></i>
+                <span style="margin-left: 3%;"></span>Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="<?php echo base_url('lgsts_users/add_user') ?>" class="dropdown-item py-2">
+                <i class="fas fa-user-plus mr-2"></i> 
+                 <span style="margin-left: -1%;"></span>Add New User 
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="<?php echo base_url('main/lgsts_logout') ?>" class="dropdown-item py-2">
+                <i class="fas fa-sign-out-alt mr-2"></i> Logout 
+            </a>
+        </div>
+    </li>
+</ul>
+
         </nav>
         <!-- /.navbar -->
